@@ -1,0 +1,89 @@
+.header-main {
+    position : fixed;
+    top:0;
+    left:0;
+    height:100px;
+    width:100%;
+    .header-main__container {
+        position: relative;
+        width:100%;
+        height:100%;
+    }
+    .header-main__ribbon, .header-main__ribbon-left, .header-main__ribbon-right {
+        @extend %ribonized;
+        @extend %oldified;
+        position:absolute;
+        background-color: $orange;
+        height:50px;
+    }
+    .header-main__ribbon{
+        width:90%;
+        margin-left:5%;
+        top:25px;
+        z-index:50;
+    }
+    .header-main__ribbon-left{
+        width:calc(5% + 30px);
+        left:0;
+        top:35px;
+        z-index:49;
+        &:after{
+            content:"";
+            position:absolute;
+            right:0;
+            bottom:0;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 30px 10px 0;
+            border-color: transparent $dark-brown transparent transparent;
+        }
+    }
+    .header-main__ribbon-right{
+        width:calc(5% + 30px);
+        right:0;
+        top:35px;
+        z-index:49;
+        &:after{
+            content:"";
+            position:absolute;
+            left:0;
+            bottom:0;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 0px 10px 30px;
+            border-color: transparent transparent transparent $dark-brown;
+        }
+    }
+    .header-main__left, .header-main__right {
+        width:calc(50% - 100px);
+        display:inline-table;
+        vertical-align:top;
+        color:white;
+        text-transform:uppercase;
+        height:50px;
+        text-align:center;
+        z-index:51;
+        position:relative;
+        & > a{
+            cursor:pointer;
+            z-index:51;
+            display:table-cell;
+            vertical-align:middle;
+            //padding:0px 50px;
+            font-size:16px;
+            text-shadow: 2px 2px rgba(black,0.2);
+        }
+    }
+    .header-main__right{
+        margin-left:200px;
+    }
+    .header-main__logo{
+        position:absolute;
+        left:50%;
+        top:2px;
+        transform:translateX(-50%);
+        z-index:50;
+    }
+}

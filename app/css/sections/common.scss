@@ -1,0 +1,27 @@
+.main-content{
+    padding-top:80px;
+    min-height:calc(100% - 160px);
+}
+
+.header-content{
+    @extend %oldified;
+    box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.1);
+    background-color:$light-brown;
+    padding:10px 40px;
+}
+
+.header-content__search-bar{
+    border-top:2px dashed rgba($beige, 0.5);
+    color:$beige;
+    padding:10px 0px 0px;
+    .i-search{
+        font-size:30px;
+        margin-right : 5px;
+    }
+    .search-input{
+        font-size:30px;
+        font-weight:200;
+        color:$beige;
+        width:50%;
+    }
+}
