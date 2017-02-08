@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-import SearchField from '../components/inputs/SearchField'
+import SearchField from '../components/inputs/SearchField';
+import PeopleItem from '../components/PeopleItem'
 import { PEOPLES } from "../data.js";
 
 class Peoples extends Component {
@@ -14,6 +15,9 @@ class Peoples extends Component {
     }
 
     render(){
+        var items = PEOPLES.map(function(people, i){
+            return <PeopleItem key={ "people"+i } user={ people } />
+        }.bind(this));
         return (
             <div>
                 <div className = { "header-content" } >
@@ -28,8 +32,7 @@ class Peoples extends Component {
                             <SearchField placeholder = "Rechercher une personnalité" onChange = {this.onSearch.bind(this)} />
                     </div>
                 </div>
-                <h2><Link to="/peoples/1">People 1</Link></h2>
-                <h2><Link to="/peoples/2/5">People 2</Link></h2>
+                <div>{items}</div>
             </div>
         )
     }

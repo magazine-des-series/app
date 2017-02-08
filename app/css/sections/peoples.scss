@@ -1,0 +1,29 @@
+.people-item{
+    display:inline-block;
+    position:relative;
+    text-align:center;
+    margin:30px 20px;
+    .people-item__picture{
+        position:relative;
+        border-radius:50%;
+        overflow:hidden;
+        width:180px;
+        height:180px;
+        img{
+            width:164px;
+            height:164px;
+            border-radius:50%;
+            border:8px solid rgba($beige,0.75);
+        }
+    }
+    h4{
+        padding:8px 0px;
+        border-top:1px solid $yellow;
+        border-bottom:1px solid $yellow;
+    }
+    .tag-label{
+        @extend %oldified;
+        width:auto;
+        transform:translateY(-20px);
+    }
+}

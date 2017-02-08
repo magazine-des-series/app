@@ -1,9 +1,19 @@
 .header-main {
     position : fixed;
+    z-index:50;
     top:0;
     left:0;
     height:100px;
     width:100%;
+    &:before{
+        content:"";
+        display:block;
+        position:absolute;
+        background:$dark-brown;
+        height:50px;
+        width:100%;
+
+    }
     .header-main__container {
         position: relative;
         width:100%;
