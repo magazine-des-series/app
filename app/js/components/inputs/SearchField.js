@@ -38,7 +38,6 @@ class SearchField extends Component {
                 type = "text"
                 maxLength = "50"
                 autoComplete = "off"
-                ref = "input"
                 value = { this.state.value }
                 placeholder = { this.props.placeholder }
                 onChange = { this.onChange.bind(this) }

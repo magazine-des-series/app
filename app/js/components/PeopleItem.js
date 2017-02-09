@@ -19,7 +19,7 @@ class PeopleItem extends Component {
                 <div className="tag-label"> { tags } </div>
                 <h4>
                     {this.props.user.firstName}
-                    <span>{ " "+this.props.user.lastName }</span>
+                    <span className="lastName">{ " "+this.props.user.lastName }</span>
                 </h4>
             </div>
         )
