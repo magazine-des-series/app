@@ -9,12 +9,21 @@ import Footer from './layout/Footer';
 import Home from './sections/Home';
 import People from "./sections/People";
 import style from '../css/main.scss';
+import ScrollArea from 'react-scrollbar';
 
 const Container = (props) => <div>
   <Header />
-  <div className="main-content">
-      {props.children}
-  </div>
+  <ScrollArea
+      speed={0.8}
+      className="main-content"
+      contentClassName="content"
+      horizontal={false}
+      vertical
+>
+    <div className="main-container">
+        {props.children}
+    </div>
+  </ScrollArea>
   <Footer />
 </div>
 
