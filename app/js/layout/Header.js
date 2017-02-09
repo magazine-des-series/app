@@ -9,12 +9,12 @@ class Header extends Component{
                     <div className="header-main__ribbon-left"></div>
                     <div className="header-main__ribbon">
                         <div className="header-main__left">
-                            <Link to='/series'>{"Toutes les séries"}</Link>
-                            <Link to='/peoples'>{"Portraits"}</Link>
+                            <Link activeClassName={ "current" } to='/series'>{"Toutes les séries"}</Link>
+                            <Link activeClassName={ "current" } to='/peoples'>{"Portraits"}</Link>
                         </div>
                         <div className="header-main__right">
-                            <Link to='/concours'>{"Concours"}</Link>
-                            <Link to='/podcasts'>{"Podcasts"}</Link>
+                            <Link activeClassName={ "current" } to='/concours'>{"Concours"}</Link>
+                            <Link activeClassName={ "current" } to='/podcasts'>{"Podcasts"}</Link>
                         </div>
                     </div>
                     <div className="header-main__ribbon-right"></div>
