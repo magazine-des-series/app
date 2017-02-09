@@ -1,0 +1,47 @@
+import React, { Component } from 'react';
+import { Link } from 'react-router';
+import SearchField from './inputs/SearchField';
+import PeopleItem from './PeopleItem'
+import { StringUtils } from '../utils/tools';
+import { PEOPLES } from "../data.js";
+
+
+class PeoplesGallery extends Component {
+    constructor(props){
+        super(props);
+    }
+
+    onSearch(value){
+        console.log(value);
+    }
+
+    render(){
+        var items = PEOPLES.map(function(people, i){
+            var fullName = StringUtils.slug((people.firstName+" "+people.lastName));
+            return <Link to={ '/peoples/'+people.id+'/'+fullName }><PeopleItem key={ "people"+i } user={ people } /></Link>
+        }.bind(this));
+        return (
+            <div>
+                <div className = { "header-content" } >
+                    <ul className = { "breadcrumb" }>
+                        <li><Link to='/'>{ "Accueil" }</Link></li>
+                        <li className={ "current" }>Portraits</li>
+                    </ul>
+                    <h1>Peoples</h1>
+                    <h3>
+                        Acteurs, scénaristes ou producteurs, ils ont tous bâti à leur façon l’univers des séries d’hier et d’aujourd’hui...
+                        <br />
+                        Retrouvez ici les plus grands noms du petit écran !
+                    </h3>
+                    <div className = { "header-content__search-bar" }>
+                        <i className = { "i-search"} />
+                            <SearchField placeholder = "Rechercher une personnalité" onChange = {this.onSearch.bind(this)} />
+                    </div>
+                </div>
+                <div>{items}</div>
+            </div>
+        )
+    }
+}
+
+module.exports = PeoplesGallery;

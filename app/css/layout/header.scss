@@ -83,8 +83,40 @@
             //padding:0px 50px;
             font-size:16px;
             text-shadow: 2px 2px rgba(black,0.2);
+            position:relative;
+            transition:color ease 0.3s;
+            overflow:hidden;
+            &:before, &:after{
+                content:"";
+                left:50%;
+                transform:translateX(-100%);
+                background-color:$accent-brown;
+                width:0%;
+                height:8px;
+                position:absolute;
+            }
+            &:before{
+                top:-8px;
+                transition:all ease 0.3s;
+            }
+            &:after{
+                bottom:-8px;
+                transition:all ease 0.3s 0.1s;
+            }
             &.current{
-                color:red;
+                color:$accent-brown;
+                &:before, &:after{
+                    height:8px;
+                    width:80px;
+                    opacity:1;
+                    transform:translateX(-50%) rotate(0deg);
+                }
+                &:before{
+                    top:0px;
+                }
+                &:after{
+                    bottom:0px;
+                }
             }
         }
     }

@@ -1,13 +1,9 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
-import SearchField from '../components/inputs/SearchField';
-import PeopleItem from '../components/PeopleItem'
-import { PEOPLES } from "../data.js";
+import PeoplesGallery from '../components/PeoplesGallery';
 
 class Peoples extends Component {
     constructor(props){
         super(props);
-        console.log(PEOPLES);
     }
 
     onSearch(value){
@@ -15,30 +11,8 @@ class Peoples extends Component {
     }
 
     render(){
-        var items = PEOPLES.map(function(people, i){
-            return <PeopleItem key={ "people"+i } user={ people } />
-        }.bind(this));
-        return (
-            <div>
-                <div className = { "header-content" } >
-                    <ul className = { "breadcrumb" }>
-                        <li><Link to='/'>{ "Accueil" }</Link></li>
-                        <li className={ "current" }>Portraits</li>
-                    </ul>
-                    <h1>Peoples</h1>
-                    <h3>
-                        Acteurs, scénaristes ou producteurs, ils ont tous bâti à leur façon l’univers des séries d’hier et d’aujourd’hui...
-                        <br />
-                        Retrouvez ici les plus grands noms du petit écran !
-                    </h3>
-                    <div className = { "header-content__search-bar" }>
-                        <i className = { "i-search"} />
-                            <SearchField placeholder = "Rechercher une personnalité" onChange = {this.onSearch.bind(this)} />
-                    </div>
-                </div>
-                <div>{items}</div>
-            </div>
-        )
+        if(this.props.params.id) return <div>{this.props.children}</div>
+        else return <PeoplesGallery/>
     }
 }
 

@@ -3,6 +3,11 @@
     position:relative;
     text-align:center;
     margin:30px 20px;
+    cursor:pointer;
+    transition:all ease 0.2s;
+    & *{
+        transition:all ease 0.2s!important;
+    }
     .people-item__picture{
         position:relative;
         border-radius:50%;
@@ -25,5 +30,18 @@
         @extend %oldified;
         width:auto;
         transform:translateY(-20px);
+    }
+    &:hover{
+        .people-item__picture{
+            @extend .z-depth-5;
+            img{
+                border:8px solid $orange;
+            }
+        }
+        h4{
+            color:$orange;
+            border-top:1px solid $orange;
+            border-bottom:1px solid $orange;
+        }
     }
 }
