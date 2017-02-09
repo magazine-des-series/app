@@ -1,0 +1,33 @@
+.breadcrumb{
+    margin-top:10px;
+    color:$beige;
+    position:relative;
+    z-index:49;
+    li{
+        display:inline-block;
+        font-size : 12px;
+        padding:5px;
+        color:$beige;
+        &:not(.current){
+            color:rgba($beige, 0.5);
+            &:after{
+                content: "\e619";
+                font-family: 'Line-Icons';
+                font-size:10px;
+                speak: none;
+                font-style: normal;
+                font-weight: normal;
+                font-variant: normal;
+                text-transform: none;
+                line-height: 1;
+                margin:10px;
+                color:$beige;
+            }
+        }
+        &.current{
+            cursor:default;
+        }
+
+    }
+
+}

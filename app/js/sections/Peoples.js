@@ -21,6 +21,10 @@ class Peoples extends Component {
         return (
             <div>
                 <div className = { "header-content" } >
+                    <ul className = { "breadcrumb" }>
+                        <li><Link to='/'>{ "Accueil" }</Link></li>
+                        <li className={ "current" }>Portraits</li>
+                    </ul>
                     <h1>Peoples</h1>
                     <h3>
                         Acteurs, scénaristes ou producteurs, ils ont tous bâti à leur façon l’univers des séries d’hier et d’aujourd’hui...
