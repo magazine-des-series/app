@@ -12,7 +12,7 @@ class PeopleItem extends Component {
         }
         return (
             <div className = "people-item">
-                <div className="people-item__picture">
+                <div className="circle-picture">
                     <img src={ "../../img/portraits/" + this.props.user.picture } alt={ this.props.user.firstName + " " + this.props.user.lastName } />
                     <div className="old-filter"></div>
                 </div>

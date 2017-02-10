@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 import SearchField from './inputs/SearchField';
 import PeopleItem from './PeopleItem'
 import { StringUtils } from '../utils/tools';
-import { PEOPLES } from "../data.js";
+import data from "../data.js";
 
 
 class PeoplesGallery extends Component {
@@ -16,12 +16,12 @@ class PeoplesGallery extends Component {
     }
 
     render(){
-        var items = PEOPLES.map(function(people, i){
+        var items = data.getPeoples().map(function(people, i){
             var fullName = StringUtils.slug((people.firstName+" "+people.lastName));
             return <Link to={ '/peoples/'+people.id+'/'+fullName }><PeopleItem key={ "people"+i } user={ people } /></Link>
         }.bind(this));
         return (
-            <div>
+            <div id={ 'peoples' }>
                 <div className = { "header-content" } >
                     <ul className = { "breadcrumb" }>
                         <li><Link to='/'>{ "Accueil" }</Link></li>

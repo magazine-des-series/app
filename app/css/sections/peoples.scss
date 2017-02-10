@@ -27,7 +27,8 @@
         border-bottom:1px solid $yellow;
     }
     .tag-label{
-        @extend %oldified;
+        @extend .z-depth-2;
+
         width:auto;
         transform:translateY(-20px);
     }
@@ -43,5 +44,36 @@
             border-top:1px solid $orange;
             border-bottom:1px solid $orange;
         }
+    }
+}
+#people{
+    h1{
+        border-bottom:2px dashed $orange;
+        padding-bottom:30px;
+    }
+    .header-content{
+        figure, article{
+            display:table-cell;
+            vertical-align:middle;
+        }
+        figure{
+            text-align:center;
+            figcaption{
+                margin-top:5px;
+                color:rgba(white,0.5);
+                text-align:center;
+                font-size:12px;
+                .i-calendar{
+                    font-size : 14px;
+                    margin-right:5px;
+                }
+            }
+        }
+        article{
+            padding:0px 0px 0px 30px;
+        }
+    }
+    .people__tags{
+        margin:10px 0px;
     }
 }

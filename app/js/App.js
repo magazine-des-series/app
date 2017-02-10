@@ -10,6 +10,7 @@ import Home from './sections/Home';
 import People from "./sections/People";
 import style from '../css/main.scss';
 import ScrollArea from 'react-scrollbar';
+import moment from 'moment';
 
 const Container = (props) =>
 <div>
@@ -29,22 +30,30 @@ const Container = (props) =>
 </div>
 
 class App extends Component {
-  render() {
-    return (
-        <Router history={ browserHistory }>
-            <Route path="/" component={Container}>
-                <IndexRoute component={Home} />
-                <Route path="/series" component={Series}/>
-                <Route path="/peoples" component={Peoples}>
-                    <Route path="/peoples(/:id)(/:fullName)" component={People}/>
-                </Route>
-                <Route path="/concours" component={Concours}/>
-                <Route path="/podcasts" component={Podcasts}/>
+    constructor(props){
+        super(props);
+        this.init();
+    }
+    init(){
+        var locale = window.navigator.userLanguage || window.navigator.language;
+        moment.locale("fr");
+    }
+      render() {
+        return (
+            <Router history={ browserHistory }>
+                <Route path="/" component={Container}>
+                    <IndexRoute component={Home} />
+                    <Route path="/series" component={Series}/>
+                    <Route path="/peoples" component={Peoples}>
+                        <Route path="/peoples(/:id)(/:fullName)" component={People}/>
+                    </Route>
+                    <Route path="/concours" component={Concours}/>
+                    <Route path="/podcasts" component={Podcasts}/>
 
-            </Route>
-       </Router>
-    );
-  }
+                </Route>
+           </Router>
+        );
+      }
 }
 
 module.exports = App;
