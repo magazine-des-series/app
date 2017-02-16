@@ -1,0 +1,31 @@
+.circle-picture{
+    position:relative;
+    border-radius:50%;
+    overflow:hidden;
+    width:180px;
+    height:180px;
+    img{
+        width:164px;
+        height:164px;
+        border-radius:50%;
+        border:8px solid rgba(white,0.2);
+    }
+    &.tiny{
+        width:64px;
+        height:64px;
+        img{
+            width:60px;
+            height:60px;
+            border:2px solid rgba(white,0.2);
+        }
+    }
+    &.big{
+        width:250px;
+        height:250px;
+        img{
+            width:230px;
+            height:230px;
+            border:10px solid rgba(white,0.2);
+        }
+    }
+}
