@@ -1,14 +1,33 @@
+@for $i from 1 through 10 {
+    $rotation: random(10) - 5;
+    @if ($rotation >= 0 and $rotation <2) {
+        $rotation: random(2) + 2;
+    }
+    @elseif ($rotation <= 0 and $rotation >-2) {
+        $rotation: random(2) + 2;
+        $rotation: - $rotation;
+    }
+    .people-item:nth-of-type(#{$i}) {
+        &:hover{
+            .tag-label{
+                transform:translateY(-20px) rotate(#{$rotation}deg);
+            }
+        }
+    }
+}
+
 .people-item{
     display:inline-block;
     position:relative;
     text-align:center;
     margin:30px 20px;
     cursor:pointer;
-    transition:all ease 0.2s;
+    transition:all ease .4s;
+    transform:translateY(0px);
     & *{
         transition:all ease 0.2s!important;
     }
-    .people-item__picture{
+    .circle-picture{
         position:relative;
         border-radius:50%;
         overflow:hidden;
@@ -18,7 +37,7 @@
             width:164px;
             height:164px;
             border-radius:50%;
-            border:8px solid rgba($beige,0.75);
+            border:8px solid rgba($beige,0.30);
         }
     }
     h4{
@@ -33,16 +52,17 @@
         transform:translateY(-20px);
     }
     &:hover{
-        .people-item__picture{
+        transform:translateY(-10px);
+        .circle-picture{
             @extend .z-depth-5;
             img{
-                border:8px solid $orange;
+                border:8px solid rgba($beige,0.75);
             }
         }
         h4{
-            color:$orange;
-            border-top:1px solid $orange;
-            border-bottom:1px solid $orange;
+            background-color:$beige;
+            color:$brown;
+            transform:scale(1.05);
         }
     }
 }

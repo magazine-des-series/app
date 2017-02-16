@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-import SearchField from './inputs/SearchField';
+import SearchField from '../inputs/SearchField';
 import PeopleItem from './PeopleItem'
-import { StringUtils } from '../utils/tools';
-import data from "../data.js";
+import { StringUtils } from '../../utils/tools';
+import data from "../../data.js";
 
 
 class PeoplesGallery extends Component {
@@ -17,8 +17,7 @@ class PeoplesGallery extends Component {
 
     render(){
         var items = data.getPeoples().map(function(people, i){
-            var fullName = StringUtils.slug((people.firstName+" "+people.lastName));
-            return <Link to={ '/peoples/'+people.id+'/'+fullName }><PeopleItem key={ "people"+i } user={ people } /></Link>
+            return <PeopleItem key={ "people"+i } user={ people } />
         }.bind(this));
         return (
             <div id={ 'peoples' }>
