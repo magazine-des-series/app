@@ -1,9 +1,33 @@
+@for $i from 1 through 10 {
+    $rotation: random(10) - 5;
+    @if ($rotation >= 0 and $rotation <2) {
+        $rotation: random(2) + 2;
+    }
+    @elseif ($rotation <= 0 and $rotation >-2) {
+        $rotation: random(2) + 2;
+        $rotation: - $rotation;
+    }
+    .people-item:nth-of-type(#{$i}) {
+        &:hover{
+            .tag-label{
+                transform:translateY(-20px) rotate(#{$rotation}deg);
+            }
+        }
+    }
+}
+
 .people-item{
     display:inline-block;
     position:relative;
     text-align:center;
     margin:30px 20px;
-    .people-item__picture{
+    cursor:pointer;
+    transition:all ease .4s;
+    transform:translateY(0px);
+    & *{
+        transition:all ease 0.2s!important;
+    }
+    .circle-picture{
         position:relative;
         border-radius:50%;
         overflow:hidden;
@@ -13,7 +37,7 @@
             width:164px;
             height:164px;
             border-radius:50%;
-            border:8px solid rgba($beige,0.75);
+            border:8px solid rgba($beige,0.30);
         }
     }
     h4{
@@ -22,8 +46,54 @@
         border-bottom:1px solid $yellow;
     }
     .tag-label{
-        @extend %oldified;
+        @extend .z-depth-2;
+
         width:auto;
         transform:translateY(-20px);
+    }
+    &:hover{
+        transform:translateY(-10px);
+        .circle-picture{
+            @extend .z-depth-5;
+            img{
+                border:8px solid rgba($beige,0.75);
+            }
+        }
+        h4{
+            background-color:$beige;
+            color:$brown;
+            transform:scale(1.05);
+        }
+    }
+}
+#people{
+    h1{
+        border-bottom:2px dashed $orange;
+        padding-bottom:30px;
+    }
+    .header-content{
+        figure, article{
+            display:table-cell;
+            vertical-align:middle;
+        }
+        figure{
+            text-align:center;
+            figcaption{
+                margin-top:5px;
+                color:rgba(white,0.5);
+                text-align:center;
+                font-size:12px;
+                .i-calendar{
+                    font-size : 14px;
+                    margin-right:5px;
+                }
+            }
+        }
+        article{
+            padding:0px 0px 0px 30px;
+        }
+    }
+    .people__tags{
+        margin:10px 0px;
     }
 }
