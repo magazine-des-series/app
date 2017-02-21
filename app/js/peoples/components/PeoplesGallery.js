@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-import SearchField from '../inputs/SearchField';
+import SearchField from '../../common/components/inputs/SearchField';
 import PeopleItem from './PeopleItem'
 import { StringUtils } from '../../utils/tools';
 import data from "../../data.js";

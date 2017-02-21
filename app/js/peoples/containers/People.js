@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-import data from "../data.js";
+import data from "../../data.js";
 import moment from 'moment';
 
 class People extends Component {
