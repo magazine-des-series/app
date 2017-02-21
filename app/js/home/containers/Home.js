@@ -13,11 +13,11 @@ class Home extends Component {
                         <h2>Zoom sur</h2>
                         <NewsSlider />
                             <div className = "home-news__button">
-                                    <div className="home-news__ribbon-left"></div>
-                                    <div className="home-news__ribbon">
+                                    <div className="ribbon-left" />
+                                    <div className="ribbon-main">
                                         <Link to='/series'>{"Voir tous les dossiers"}</Link>
                                     </div>
-                                    <div className="home-news__ribbon-right"></div>
+                                    <div className="ribbon-right" />
                             </div>
 
 

@@ -15,17 +15,20 @@
 
     }
     .header-main__container {
+        @include ribonized();
         position: relative;
+        top:25px;
         width:100%;
     }
-    .header-main__ribbon, .header-main__ribbon-left, .header-main__ribbon-right {
-        @extend %ribonized;
+    /*.header-main__ribbon, .header-main__ribbon-left, .header-main__ribbon-right {
+
+
         @extend %oldified;
         position:absolute;
         background-color: $orange;
         height:50px;
-    }
-    .header-main__ribbon{
+    }*/
+    /*.header-main__ribbon{
         width:90%;
         margin-left:5%;
         top:25px;
@@ -64,7 +67,7 @@
             border-width: 0 0px 10px 30px;
             border-color: transparent transparent transparent $dark-brown;
         }
-    }
+    }*/
     .header-main__left, .header-main__right {
         width:calc(50% - 100px);
         display:inline-table;

@@ -13,6 +13,83 @@
     }
 }
 
+@mixin ribonized($position:'bottom', $height:50px, $borderWidth:2px, $top:6px, $decalX:30px, $sideWidth:5%, $zindex:50) {
+    $decalY:($borderWidth + $top)*2;
+    .ribbon-main, .ribbon-left, .ribbon-right{
+        @extend %oldified;
+        @extend .z-depth-3;
+        position:absolute;
+
+        height:$height;
+        &:before{
+            content:"";
+            position:absolute;
+            left:0;
+            width:100%;
+            height:calc(100% - (#{$decalY}));
+            top:$top;
+            border-color:white;
+            border-bottom:$borderWidth dashed rgba(white, 0.5);
+            border-top:$borderWidth dashed rgba(white, 0.5);
+        }
+    }
+    .ribbon-main{
+        background-color: $orange;
+        width:calc(100% - (2 * #{$sideWidth}));
+        margin-left:$sideWidth;
+        z-index:$zindex;
+    }
+    .ribbon-left, .ribbon-right{
+        background-color: darken($orange, 10%);
+        width:calc(#{$sideWidth} + #{$decalX});
+        top:10px;
+        z-index:$zindex - 1;
+        @if $position == "top" {
+            top:-10px;
+        }@else {
+            top:10px;
+        }
+        &:after{
+            content:"";
+            position:absolute;
+            width: 0;
+            height: 0;
+            border-style: solid;
+        }
+    }
+    .ribbon-left{
+        left:0;
+        &:after{
+            right:0;
+            @if $position == "top" {
+                top:0;
+                border-width: 0 0 10px $decalX;
+                border-color: transparent transparent $brown transparent;
+            }@else {
+                bottom:0;
+                border-width: 0 $decalX 10px 0;
+                border-color: transparent $brown transparent transparent;
+            }
+        }
+    }
+    .ribbon-right{
+        right:0;
+        &:after{
+            left:0;
+            @if $position == "top" {
+                top:0;
+                border-width: 10px 0 0 $decalX;
+                border-color: transparent transparent transparent $brown;
+            }@else {
+                bottom:0;
+                border-width: 0 0 10px $decalX;
+                border-color: transparent transparent transparent $brown;
+            }
+        }
+    }
+
+}
+
 %oldified{
     background-image: url("../img/grain.png");
     background-repeat: repeat;

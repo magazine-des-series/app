@@ -1,21 +1,30 @@
 import React, { Component } from 'react';
+import {TweenMax} from "gsap";
 
 class NewsItem extends Component {
     constructor(props){
         super(props);
     }
+    componentWillEnter (callback) {
+        const el = this.container;
+        TweenMax.fromTo(el, 0.3, {x: '100%', opacity: 1}, {x: '0%', opacity: 1, onComplete: callback});
+    }
+    componentWillLeave (callback) {
+        const el = this.container;
+        TweenMax.fromTo(el, 0.3, {x: 0, opacity: 1}, {x: '-100%', opacity: 1, onComplete: callback});
+    }
     render(){
         return(
-            <article className = "home-news__item" itemScope itemType="http://schema.org/Article">
-                <img itemProp = "image" src = "https://placeholdit.imgix.net/~text?txtsize=33&txt=480%C3%97270&w=480&h=270" />
-                <h3 itemProp = "name">L'île fantastique</h3>
+            <article className = "home-news__item" itemScope itemType="http://schema.org/Article" ref={c => this.container = c}>
+                <img itemProp = "image" src = {this.props.data.image} />
+                <h3 itemProp = "name">{this.props.data.name}</h3>
                 <p className = "meta">
                     <i className = { "i-calendar"} />
-                    <time dateTime="2010-07-03" itemProp="dateCreated">3 juillet 2010</time>
+                    <time dateTime="2010-07-03" itemProp="dateCreated">{this.props.data.dateCreated}</time>
                     <span>{" // "}</span>
-                    <span itemProp = "author">Thierry le Peut, Christophe Dordain</span>
+                    <span itemProp = "author">{this.props.data.author}</span>
                 </p>
-                <p itemProp = "description">{"Mr Roarke est un milliardaire excentrique, propriétaire d'une île au coeur de l'océan Pacifique afin d'y accueillir les touristes et de réaliser leur désir le plus cher. Si la plupart du temps, il s'agit de trouver l'Amour, ces fantasmes sont toutefois variés : problèmes familiaux, d'identité, mal-être, ou encore trouver un certain équilibre, sont des thèmes abordés. "}</p>
+                <p itemProp = "description">{this.props.data.description}</p>
                 <div className = "readMore"><i className = { "i-play"} />Lire le dossier</div>
         </article>
         )
