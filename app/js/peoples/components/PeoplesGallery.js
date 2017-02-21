@@ -27,11 +27,11 @@ class PeoplesGallery extends Component {
                         <li className={ "current" }>Portraits</li>
                     </ul>
                     <h1>Peoples</h1>
-                    <h3>
+                    <h5>
                         Acteurs, scénaristes ou producteurs, ils ont tous bâti à leur façon l’univers des séries d’hier et d’aujourd’hui...
                         <br />
                         Retrouvez ici les plus grands noms du petit écran !
-                    </h3>
+                    </h5>
                     <div className = { "header-content__search-bar" }>
                         <i className = { "i-search"} />
                             <SearchField placeholder = "Rechercher une personnalité" onChange = {this.onSearch.bind(this)} />

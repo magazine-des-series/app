@@ -49,7 +49,7 @@ class People extends Component {
                         </figure>
                         <article>
                             <h1>{ fullName }</h1>
-                            <h3><div dangerouslySetInnerHTML={{__html: this.people.summary}}/></h3>
+                            <h5><div dangerouslySetInnerHTML={{__html: this.people.summary}}/></h5>
                             <div className='people__tags'>
                                 {tagItems}
                             </div>

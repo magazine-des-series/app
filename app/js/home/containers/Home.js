@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
+import NewsSlider from '../components/NewsSlider';
 
 class Home extends Component {
     render(){
@@ -9,7 +10,17 @@ class Home extends Component {
                     <div className = "home-news__background" />
                     <img className = "home-news__logo" src="../../img/logo_big.png" alt="Logo" />
                     <div className = "home-news__content">
-                        <h3>Zoom sur</h3>
+                        <h2>Zoom sur</h2>
+                        <NewsSlider />
+                            <div className = "home-news__button">
+                                    <div className="home-news__ribbon-left"></div>
+                                    <div className="home-news__ribbon">
+                                        <Link to='/series'>{"Voir tous les dossiers"}</Link>
+                                    </div>
+                                    <div className="home-news__ribbon-right"></div>
+                            </div>
+
+
                     </div>
                 </section>
                 <h1>{"HOME"}</h1>
