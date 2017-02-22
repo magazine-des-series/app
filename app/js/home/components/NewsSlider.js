@@ -5,7 +5,7 @@ import TransitionGroup from 'react-addons-transition-group';
 class NewsSlider extends Component {
     constructor(props){
         super(props);
-        this.state = {
+        /*this.state = {
             data:[
                 {
                     name:"L'île fantastique",
@@ -25,17 +25,19 @@ class NewsSlider extends Component {
                 }
             ],
             currentIndex:0
-        }
+        }*/
     }
     onClickHandler(){
-        (this.state.currentIndex==this.state.data.length-1)?this.setState({currentIndex:0}):this.setState({currentIndex:this.state.currentIndex+1});
+        if(this.props.onClickHandler) this.props.onClickHandler();
+        //(this.state.currentIndex==this.state.data.length-1)?this.setState({currentIndex:0}):this.setState({currentIndex:this.state.currentIndex+1});
     }
     render(){
-        let data = this.state.data[this.state.currentIndex];
+        if(!this.props.items) return <div></div>
+        let data = this.props.items[this.props.currentIndex];
         return(
             <div className = "home-news__slider" onClick={this.onClickHandler.bind(this)}>
-                <TransitionGroup>
-                <NewsItem key={ "item"+data.id } data={data}/>
+                <TransitionGroup component="div">
+                    <NewsItem key={ "item"+data.id } data={data}/>
                 </TransitionGroup>
             </div>
         )

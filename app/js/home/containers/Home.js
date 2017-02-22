@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import NewsSlider from '../components/NewsSlider';
+import { connect } from 'react-redux';
+import { createStore, bindActionCreators } from 'redux';
+import * as actions from '../actions/actionsSlider';
 
 class Home extends Component {
+    onClickHandler(){
+        if(this.props.onClickHandler) this.props.onClickHandler();
+    }
     render(){
         return (
             <div className = "full" id = "home">
@@ -11,7 +17,7 @@ class Home extends Component {
                     <img className = "home-news__logo" src="../../img/logo_big.png" alt="Logo" />
                     <div className = "home-news__content">
                         <h2>Zoom sur</h2>
-                        <NewsSlider />
+                        <NewsSlider onClickHandler = {this.onClickHandler.bind(this)} items = {this.props.navigationReducer.items} currentIndex = {this.props.navigationReducer.currentIndex} />
                             <div className = "home-news__button">
                                     <div className="ribbon-left" />
                                     <div className="ribbon-main">
@@ -29,5 +35,17 @@ class Home extends Component {
         )
     }
 }
+function mapStateToProps(state) {
+  var sliderState = state;
+  return sliderState;
+}
 
-module.exports = Home;
+function mapDispatchToProps(dispatch) {
+    return({
+        onClickHandler:function(){
+            dispatch(actions.sliderNext());
+        }
+    })
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
+//module.exports = Home;

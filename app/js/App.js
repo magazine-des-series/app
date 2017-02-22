@@ -11,6 +11,10 @@ import People from "./peoples/containers/People";
 import style from '../css/main.scss';
 import ScrollArea from 'react-scrollbar';
 import moment from 'moment';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import sliderReducer from './home/reducers/sliderReducer';
+import { sliderNext, sliderPrev, sliderAutoSwitch, sliderResetSwitchTime } from './home/actions/actionsSlider'
 
 const Container = (props) =>
 <div>
@@ -28,6 +32,32 @@ const Container = (props) =>
     </ScrollArea>
     <Footer />
 </div>
+let datas = [
+    {
+        name:"L'île fantastique",
+        image:"https://placeholdit.imgix.net/~text?txtsize=33&txt=480%C3%97270&w=480&h=270",
+        dateCreated:"3 juillet 2010",
+        author:"Thierry le Peut, Christophe Dordain",
+        description:"Mr Roarke est un milliardaire excentrique, propriétaire d'une île au coeur de l'océan Pacifique afin d'y accueillir les touristes et de réaliser leur désir le plus cher. Si la plupart du temps, il s'agit de trouver l'Amour, ces fantasmes sont toutefois variés : problèmes familiaux, d'identité, mal-être, ou encore trouver un certain équilibre, sont des thèmes abordés. ",
+        id:1
+    },
+    {
+        name:"L'île fantastique 2",
+        image:"https://placeholdit.imgix.net/~text?txtsize=33&txt=480%C3%97270&w=480&h=270",
+        dateCreated:"3 juillet 2010",
+        author:"Thierry le Peut, Christophe Dordain",
+        description:"Mr Roarke est un milliardaire excentrique, propriétaire d'une île au coeur de l'océan Pacifique afin d'y accueillir les touristes et de réaliser leur désir le plus cher. Si la plupart du temps, il s'agit de trouver l'Amour, ces fantasmes sont toutefois variés : problèmes familiaux, d'identité, mal-être, ou encore trouver un certain équilibre, sont des thèmes abordés. ",
+        id:2
+    }
+];
+let store = createStore(sliderReducer,{navigationReducer:{items:datas, currentIndex:0}});
+let unsubscribe = store.subscribe(() =>
+  console.log(store.getState())
+)
+store.dispatch(sliderNext());
+store.dispatch(sliderNext());
+store.dispatch(sliderNext());
+store.dispatch(sliderNext());
 
 class App extends Component {
     constructor(props){
@@ -40,18 +70,20 @@ class App extends Component {
     }
       render() {
         return (
-            <Router history={ browserHistory }>
-                <Route path="/" component={Container}>
-                    <IndexRoute component={Home} />
-                    <Route path="/series" component={Series}/>
-                    <Route path="/peoples" component={Peoples}>
-                        <Route path="/peoples(/:id)(/:fullName)" component={People}/>
-                    </Route>
-                    <Route path="/concours" component={Concours}/>
-                    <Route path="/podcasts" component={Podcasts}/>
+            <Provider store={store}>
+                <Router history={ browserHistory }>
+                    <Route path="/" component={Container}>
+                        <IndexRoute component={Home} />
+                        <Route path="/series" component={Series}/>
+                        <Route path="/peoples" component={Peoples}>
+                            <Route path="/peoples(/:id)(/:fullName)" component={People}/>
+                        </Route>
+                        <Route path="/concours" component={Concours}/>
+                        <Route path="/podcasts" component={Podcasts}/>
 
-                </Route>
-           </Router>
+                    </Route>
+               </Router>
+           </Provider>
         );
       }
 }
