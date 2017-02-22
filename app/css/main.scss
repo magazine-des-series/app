@@ -12,6 +12,7 @@ body {
     font-family:'Montserrat', sans-serif;
     height:100%;
     overflow:hidden;
+    font-size:13px;
 }
 
 #root{
@@ -30,11 +31,22 @@ h1{
     margin-bottom:10px;
 }
 
-div, h2, h3, h4, h5, span, input{
+div, h2, h3, h4, h5, span, input,p{
     font-family:'Montserrat', sans-serif;
 }
 
+h2{
+    font-family : "Pacifico", cursive;
+    font-size:30px;
+    color:$orange;
+}
 h3{
+    font-size:24px;
+    color:$orange;
+    text-transform:uppercase;
+    font-weight:800;
+}
+h5{
     font-size:16px;
     color:$beige;
     margin-bottom:10px;
