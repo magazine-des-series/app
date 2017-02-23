@@ -82,7 +82,7 @@ class App extends Component {
                     <Route path="/" component={Container}>
                         <IndexRoute component={Home} />
                         <Route path="/series" component={Series}/>
-                        <Route path="/peoples" component={Peoples}>
+                        <Route path="/peoples" component={Peoples} params = {{page:1}}>
                             <Route path="/peoples(/:id)(/:fullName)" component={People}/>
                         </Route>
                         <Route path="/concours" component={Concours}/>

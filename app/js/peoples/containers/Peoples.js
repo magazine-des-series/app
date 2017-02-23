@@ -3,6 +3,7 @@ import PeoplesGallery from '../components/PeoplesGallery';
 import { connect } from 'react-redux';
 import { createStore, bindActionCreators } from 'redux';
 import * as actions from '../actions/actions';
+import Pagination from "../../common/components/Pagination";
 
 class Peoples extends Component {
     constructor(props){
@@ -10,8 +11,9 @@ class Peoples extends Component {
     }
 
     componentDidMount(){
-        if(this.props.fetchPeoples) this.props.fetchPeoples();
-        console.log(this.props.visiblePeoples);
+        let page = 1;
+        if(this.props.location.query.page) page = this.props.location.query.page;
+        if(this.props.fetchPeoples) this.props.fetchPeoples(page);
     }
 
     onSearch(value){
@@ -20,7 +22,12 @@ class Peoples extends Component {
 
     render(){
         if(this.props.params.id) return <div>{this.props.children}</div>
-        else return <PeoplesGallery data = {this.props.visiblePeoples} />
+        else return (
+            <div>
+                <PeoplesGallery data = {this.props.visiblePeoples} />
+                <Pagination pageCount = {10} />
+            </div>
+        )
     }
 }
 

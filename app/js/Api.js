@@ -3,6 +3,7 @@ import * as peopleActions from './peoples/actions/actions';
 export default function api(type, args) {
     let url;
     let opts = {};
+
     switch(type){
         case peopleActions.FETCH_PEOPLES:
             let page = 1;
@@ -13,6 +14,7 @@ export default function api(type, args) {
         default:
             url = "";
     }
+
     return fetch(url, opts)
       .then(function (resp) {
         return resp.json()
