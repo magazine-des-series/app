@@ -16,7 +16,9 @@ class PeoplesGallery extends Component {
     }
 
     render(){
-        var items = data.getPeoples().map(function(people, i){
+        var itemsData = this.props.data;
+        if( !itemsData) itemsData = [];
+        var items = itemsData.map(function(people, i){
             return <PeopleItem key={ "people"+i } user={ people } />
         }.bind(this));
         return (

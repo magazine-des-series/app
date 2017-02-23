@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import 'babel-polyfill';
 import {Router, Route, IndexRoute, Link, browserHistory} from 'react-router';
 import Peoples from './peoples/containers/Peoples';
 import Series from './shows/containers/Series';
@@ -11,10 +12,15 @@ import People from "./peoples/containers/People";
 import style from '../css/main.scss';
 import ScrollArea from 'react-scrollbar';
 import moment from 'moment';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
-import sliderReducer from './home/reducers/sliderReducer';
-import { sliderNext, sliderPrev, sliderAutoSwitch, sliderResetSwitchTime } from './home/actions/actionsSlider'
+
+import createSagaMiddleware from 'redux-saga';
+import saga from './saga';
+import HomeReducer from './home/reducers/reducer';
+import PeopleReducer from './peoples/reducers/reducer';
+import { sliderNext, sliderPrev, sliderAutoSwitch, sliderResetSwitchTime } from './home/actions/actionsSlider';
+import * as peopleActions from './peoples/actions/actions';
 
 const Container = (props) =>
 <div>
@@ -50,14 +56,15 @@ let datas = [
         id:2
     }
 ];
-let store = createStore(sliderReducer,{navigationReducer:{items:datas, currentIndex:0}});
+const sagaMiddleware = createSagaMiddleware();
+const reducer = combineReducers({HomeReducer, PeopleReducer});
+let store = createStore(reducer,applyMiddleware(sagaMiddleware));
+
+sagaMiddleware.run(saga);
 let unsubscribe = store.subscribe(() =>
   console.log(store.getState())
 )
-store.dispatch(sliderNext());
-store.dispatch(sliderNext());
-store.dispatch(sliderNext());
-store.dispatch(sliderNext());
+store.dispatch(peopleActions.fetchPeoples());
 
 class App extends Component {
     constructor(props){

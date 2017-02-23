@@ -51,4 +51,5 @@ const sliderReducer = combineReducers({
     autoSwitchReducer,
     navigationReducer
 });
+
 export default sliderReducer;

@@ -36,7 +36,7 @@ class Home extends Component {
     }
 }
 function mapStateToProps(state) {
-  var sliderState = state;
+  var sliderState = state.sliderReducer;
   return sliderState;
 }
 
