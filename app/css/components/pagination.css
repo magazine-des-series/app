@@ -11,13 +11,19 @@
         width:36px;
         height:36px;
         border:2px solid rgba($old-white, 0.3);
-        line-height:36px;
+        line-height:32px;
         color:$yellow;
         position:relative;
         margin:0px 10px;
         font-size:18px;
-        font-weight:400;
+        font-weight:300;
+        transition:all ease 0.2s;
+        cursor:default;
+        &:not(.current):not(.empty){
+            cursor:pointer;
+        }
         &:before, &:after{
+            transition:all ease 0.2s;
             content:"";
             display:inline-block;
             width:10px;
@@ -29,10 +35,13 @@
         &.empty{
             color:rgba($old-white, 0.3);
             span{
-                position:absolute;
-                transform:translate(-50%,-50%);
+                display:block;
+                font-size:24px;
+                line-height:32px;
+                transform:translateY(-5px);
             }
         }
+
         &:before{
             left:-2px;
             transform:translateX(-100%);
@@ -42,12 +51,24 @@
         }
         &:first-child{
             &:before{
-                width:30px;
+                width:40px!important;
             }
         }
         &:last-child{
             &:after{
-                width:30px;
+                width:40px!important;
+            }
+        }
+        &.current{
+            border-color:$orange;
+            color:$orange;
+            width:48px;
+            height:48px;
+            line-height:44px;
+            font-size:24px;
+            margin:0px 4px;
+            &:before, &:after{
+                width:4px;
             }
         }
     }

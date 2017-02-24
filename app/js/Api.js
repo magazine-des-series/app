@@ -14,12 +14,14 @@ export default function api(type, args) {
         default:
             url = "";
     }
+    var total = 0;
 
     return fetch(url, opts)
       .then(function (resp) {
+        total = resp.headers.get("X-Total-Count");
         return resp.json()
       })
-      .then(function (resp) {
-        return resp
+      .then(function (data) {
+          return {data:data, total:total}
       })
 }

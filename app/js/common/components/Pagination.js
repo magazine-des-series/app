@@ -2,26 +2,9 @@ import React, {Component} from 'react';
 
 class Pagination extends Component{
 
-    onClickPrev(){
-        this.props.onClickPrev();
-    }
-
-    onClickNext(){
-        this.props.onClickNext();
-    }
-
     onClickPage(pageNumber){
-        this.props.onClickPage();
-    }
-
-    renderPrevButton(){
-    if(this.props.pageCount<=6) return "";
-    return <div className={"prev "+(this.props.currentPage==1?"disabled":"")} onClick={this.onClickPrev.bind(this)}><i className="i-chevron-left"></i></div>
-    }
-
-    renderNextButton(){
-        if(this.props.pageCount<=6) return "";
-        return <div className={"next "+(this.props.currentPage==this.props.pageCount?"disabled":"")} onClick={this.onClickNext.bind(this)}><i className="i-chevron-right"></i></div>
+        if(this.props.currentPage == pageNumber) return;
+        this.props.onClickPage(pageNumber);
     }
 
     renderEmptyButton(){
@@ -83,11 +66,9 @@ class Pagination extends Component{
         if(this.props.pageCount==1) return <div></div>
         return(
             <div className="pagination">
-                {this.renderPrevButton()}
                 <ul>
                     {this.renderNumbers()}
                 </ul>
-                {this.renderNextButton()}
             </div>
         )
     }
@@ -96,8 +77,6 @@ class Pagination extends Component{
 Pagination.propTypes = {
     pageCount : React.PropTypes.number,
     currentPage : React.PropTypes.number,
-    onClickPrev : React.PropTypes.func,
-    onClickNext : React.PropTypes.func,
     onClickPage : React.PropTypes.func,
 
 }
@@ -105,8 +84,6 @@ const noop = () => {};
 Pagination.defaultProps = {
     pageCount : 1,
     currentPage : 1,
-    onClickPrev : noop,
-    onClickNext : noop,
     onClickPage : noop
 }
 module.exports = Pagination;

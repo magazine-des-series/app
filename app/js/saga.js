@@ -14,8 +14,8 @@ function *fetchPeople(action) {
 
 function *fetchPeoples(action) {
    try {
-      const peoples = yield call(api, peopleActions.FETCH_PEOPLES, {page:action.page});
-      yield put({type: peopleActions.PEOPLES_RECEIVED, peoples: peoples});
+      const peoplesData = yield call(api, peopleActions.FETCH_PEOPLES, {page:action.page});
+      yield put({type: peopleActions.PEOPLES_RECEIVED, peoples: peoplesData.data, total:peoplesData.total});
    } catch (e) {
       yield put({type: peopleActions.PEOPLES_FETCH_FAILED, message: e.message});
    }

@@ -9,6 +9,8 @@ export const PEOPLES_RECEIVED = "PEOPLES_RECEIVED";
 export const PEOPLES_FETCH_FAILED = "PEOPLES_FETCH_FAILED";
 export const PEOPLE_FETCH_FAILED = "PEOPLE_FETCH_FAILED";
 
+export const CHANGE_PAGE = "CHANGE_PAGE";
+
 
 /*
  * action creators
@@ -29,4 +31,8 @@ export function receivePeople(people){
 
 export function receivePeoples(peoples){
     return { type : PEOPLES_RECEIVED, peoples : peoples }
+}
+
+export function changePage(page){
+    return {type : CHANGE_PAGE, page : page }
 }
