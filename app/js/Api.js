@@ -7,8 +7,10 @@ export default function api(type, args) {
     switch(type){
         case peopleActions.FETCH_PEOPLES:
             let page = 1;
+            let search = "";
             if(args && args.page) page = args.page;
-            url = 'http://localhost:3000/peoples?_page='+page;
+            if(args && args.filter) search = args.filter;
+            url = 'http://localhost:3000/peoples?_page='+page+'&_sort=lastName'+'&lastName_like='+search;
             opts = {method:'GET'};
             break;
         default:

@@ -13,26 +13,37 @@ class Peoples extends Component {
 
     componentDidMount(){
         let page = this.props.currentPage;
-        if(this.props.fetchPeoples) this.props.fetchPeoples(page);
+        let filter = this.props.filter;
+        let searchQuery = (filter=="")?"":"&search="+filter;
+        if(page > this.props.lastPage) return this.gotoNewUrl(this.props.lastPage, this.props.filter);
+        if(this.props.fetchPeoples) this.props.fetchPeoples(page, filter);
     }
 
     componentWillUpdate(nextProps){
         let page = nextProps.currentPage;
-        if(this.props.currentPage != page) this.props.fetchPeoples(page);
+        let filter = nextProps.filter;
+        if(nextProps.currentPage > nextProps.lastPage) return this.gotoNewUrl(nextProps.lastPage, nextProps.filter);
+        if(this.props.currentPage != page || this.props.filter != filter) this.props.fetchPeoples(page, filter);
     }
 
     onSearch(value){
-        console.log(value);
+        this.gotoNewUrl(this.props.currentPage, value);
     }
 
     changePage(page){
-        browserHistory.push("/peoples?page="+page);
+        this.gotoNewUrl(page, this.props.filter);
+    }
+
+    gotoNewUrl(page, filter){
+        let searchQuery = (filter=="")?"":"&search="+filter;
+        let url = "/peoples?page="+page+searchQuery;
+        browserHistory.push(url);
     }
 
     render(){
         return (
             <div>
-                <PeoplesGallery data = {this.props.visiblePeoples} />
+                <PeoplesGallery data = {this.props.visiblePeoples} onSearch = {this.onSearch.bind(this)} searchText = { this.props.filter }/>
                 <Pagination pageCount = {this.props.lastPage} currentPage = {this.props.currentPage} onClickPage = {this.changePage.bind(this)} />
             </div>
         )
@@ -40,13 +51,13 @@ class Peoples extends Component {
 }
 
 function mapStateToProps(state) {
-    return state.PeopleReducer
+    return state.PeopleReducer;
 }
 
 function mapDispatchToProps(dispatch) {
     return({
-        fetchPeoples:function(page){
-            dispatch(actions.fetchPeoples(page));
+        fetchPeoples:function(page, filter){
+            dispatch(actions.fetchPeoples(page, filter));
         },
     })
 }

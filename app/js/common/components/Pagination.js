@@ -76,7 +76,7 @@ class Pagination extends Component{
 
 Pagination.propTypes = {
     pageCount : React.PropTypes.number,
-    currentPage : React.PropTypes.number,
+    //currentPage : React.PropTypes.number,
     onClickPage : React.PropTypes.func,
 
 }

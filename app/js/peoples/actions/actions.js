@@ -20,9 +20,10 @@ export function fetchPeople(peopleId){
     return { type : FETCH_PEOPLE, peopleId : peopleId }
 }
 
-export function fetchPeoples(page){
+export function fetchPeoples(page, filter){
     if(!page) page = 1;
-    return { type : FETCH_PEOPLES, page : page  }
+    if(!filter) filter = "";
+    return { type : FETCH_PEOPLES, page : page, filter:filter  }
 }
 
 export function receivePeople(people){

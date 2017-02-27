@@ -1,5 +1,6 @@
 import * as actions from '../actions/actions';
 import { LOCATION_CHANGE } from 'react-router-redux';
+import { browserHistory } from 'react-router';
 
 const initialState = {
     visiblePeoples : [],
@@ -12,14 +13,15 @@ const initialState = {
 export default function peoples(state = initialState, action){
     switch(action.type){
         case actions.PEOPLES_RECEIVED:
-            return Object.assign( {}, state, {visiblePeoples:action.peoples, lastPage : Math.ceil(action.total / state.itemsPerPage)} );
+            return Object.assign( {}, state, {visiblePeoples:action.peoples, lastPage : action.lastPage} );
         case LOCATION_CHANGE:
             let pathname = action.payload.pathname;
             let query = action.payload.query;
             if(pathname != "/peoples") return state;
             let newPage = query.page || 1;
-            if (newPage == state.currentPage) return state;
-            else return Object.assign( {}, state, {currentPage:newPage} );
+            let filter = query.search || "";
+            if (newPage == state.currentPage && filter == state.filter) return state;
+            else return Object.assign( {}, state, {currentPage:newPage, filter:filter} );
         default:
             return state;
     }

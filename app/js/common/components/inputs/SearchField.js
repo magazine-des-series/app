@@ -17,18 +17,21 @@ class SearchField extends Component {
         this.state = this.initialState = {
             value : (this.props.value?this.props.value:""),
         }
-
     }
+
 
     normalizeInput() {
         return this.state.value.toLowerCase().trim();
     }
 
     onChange(e){
-        console.log("onChange!");
         const value = e.target.value;
-        if (!value) return this.setState(this.initialState);
+        if (!value){
+           this.props.onChange("");
+           return this.setState({value:""});
+        }
         this.setState({value:value});
+        if(this.props.onChange) this.props.onChange(value);
     }
 
     render(){

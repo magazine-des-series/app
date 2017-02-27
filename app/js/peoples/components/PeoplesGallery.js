@@ -12,7 +12,7 @@ class PeoplesGallery extends Component {
     }
 
     onSearch(value){
-        console.log(value);
+        if(this.props.onSearch) this.props.onSearch(value);
     }
 
     render(){
@@ -36,7 +36,7 @@ class PeoplesGallery extends Component {
                     </h5>
                     <div className = { "header-content__search-bar" }>
                         <i className = { "i-search"} />
-                            <SearchField placeholder = "Rechercher une personnalité" onChange = {this.onSearch.bind(this)} />
+                            <SearchField value = { this.props.searchText } placeholder = "Rechercher une personnalité" onChange = {this.onSearch.bind(this)} />
                     </div>
                 </div>
                 <div>{items}</div>
