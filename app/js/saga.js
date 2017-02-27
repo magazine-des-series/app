@@ -6,12 +6,13 @@ import {getPeoples} from './selectors';
 
 function *fetchPeople(action) {
    try {
-      const people = yield call(Api.fetchPeople, action.payload.peopleId);
-      yield put({type: peopleActions.PEOPLE_RECEIVED, people: people});
+      const peopleData = yield call(api, peopleActions.FETCH_PEOPLE, {id:action.peopleId});
+      yield put({type: peopleActions.PEOPLE_RECEIVED, people: peopleData.data});
    } catch (e) {
       yield put({type: peopleActions.PEOPLE_FETCH_FAILED, message: e.message});
    }
 }
+
 function *fetchPeoples(action) {
    try {
       const peoplesData = yield call(api, peopleActions.FETCH_PEOPLES, {page:action.page, filter:action.filter});
@@ -24,7 +25,17 @@ function *fetchPeoples(action) {
    }
 }
 
+function *fetchRelatedPeoples(action) {
+   try {
+      const peoplesData = yield call(api, peopleActions.FETCH_RELATED_PEOPLES, {id:action.id});
+      yield put({type: peopleActions.RELATED_PEOPLES_RECEIVED, peoples: peoplesData.data});
+   } catch (e) {
+      yield put({type: peopleActions.PEOPLES_FETCH_FAILED, message: e.message});
+   }
+}
+
 export default function *rootSaga(){
     yield takeLatest(peopleActions.FETCH_PEOPLE,fetchPeople);
     yield takeLatest(peopleActions.FETCH_PEOPLES,fetchPeoples);
+    yield takeLatest(peopleActions.FETCH_RELATED_PEOPLES,fetchRelatedPeoples);
 }

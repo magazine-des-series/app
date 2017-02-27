@@ -14,13 +14,12 @@
 }
 
 @mixin ribonized($position:'bottom', $height:50px, $borderWidth:2px, $top:6px, $decalX:30px, $sideWidth:5%, $zindex:50) {
+    @include ribonizedSimple($position, $height, $borderWidth, $top, $decalX, $sideWidth, $zindex);
     $decalY:($borderWidth + $top)*2;
-    .ribbon-main, .ribbon-left, .ribbon-right{
+    .ribbon-left, .ribbon-right{
         @extend %oldified;
+        background-color: $orange;
         @extend .z-depth-3;
-        position:absolute;
-
-        height:$height;
         &:before{
             content:"";
             position:absolute;
@@ -33,14 +32,36 @@
             border-top:$borderWidth dashed rgba(white, 0.5);
         }
     }
+}
+
+@mixin ribonizedSimple($position:'bottom', $height:50px, $borderWidth:2px, $top:6px, $decalX:30px, $sideWidth:5%, $zindex:50) {
+    $decalY:($borderWidth + $top)*2;
+    position:relative;
+    .ribbon-main, .ribbon-left, .ribbon-right{
+        position:absolute;
+        height:$height;
+
+    }
     .ribbon-main{
+        @extend %oldified;
         background-color: $orange;
         width:calc(100% - (2 * #{$sideWidth}));
         margin-left:$sideWidth;
         z-index:$zindex;
+        @extend .z-depth-3;
+        &:before{
+            content:"";
+            position:absolute;
+            left:0;
+            width:100%;
+            height:calc(100% - (#{$decalY}));
+            top:$top;
+            border-color:white;
+            border-bottom:$borderWidth dashed rgba(white, 0.5);
+            border-top:$borderWidth dashed rgba(white, 0.5);
+        }
     }
     .ribbon-left, .ribbon-right{
-        background-color: darken($orange, 10%);
         width:calc(#{$sideWidth} + #{$decalX});
         top:10px;
         z-index:$zindex - 1;

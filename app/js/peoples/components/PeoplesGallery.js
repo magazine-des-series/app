@@ -3,7 +3,6 @@ import { Link } from 'react-router';
 import SearchField from '../../common/components/inputs/SearchField';
 import PeopleItem from './PeopleItem'
 import { StringUtils } from '../../utils/tools';
-import data from "../../data.js";
 
 
 class PeoplesGallery extends Component {
@@ -19,7 +18,7 @@ class PeoplesGallery extends Component {
         var itemsData = this.props.data;
         if( !itemsData) itemsData = [];
         var items = itemsData.map(function(people, i){
-            return <PeopleItem key={ "people"+i } user={ people } />
+            return <PeopleItem key={ "people"+i } user ={ people } />
         }.bind(this));
         return (
             <div id={ 'peoples' }>

@@ -67,11 +67,11 @@
     }
 }
 #people{
-    h1{
-        border-bottom:2px dashed $orange;
-        padding-bottom:30px;
-    }
     .header-content{
+        h1{
+            border-bottom:2px dashed $orange;
+            padding-bottom:30px;
+        }
         figure, article{
             display:table-cell;
             vertical-align:middle;
@@ -95,5 +95,12 @@
     }
     .people__tags{
         margin:10px 0px;
+    }
+    #relatedPeoples{
+        text-align:center;
+        .circle-picture{
+            display:inline-block;
+            margin:10px;
+        }
     }
 }

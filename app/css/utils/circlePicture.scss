@@ -10,6 +10,15 @@
         border-radius:50%;
         border:8px solid rgba(white,0.2);
     }
+    &.small{
+        width:88px;
+        height:88px;
+        img{
+            width:80px;
+            height:80px;
+            border:4px solid rgba(white,0.2);
+        }
+    }
     &.tiny{
         width:64px;
         height:64px;

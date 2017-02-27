@@ -19,7 +19,7 @@ import { syncHistoryWithStore, routerReducer } from 'react-router-redux';
 import createSagaMiddleware from 'redux-saga';
 import saga from './saga';
 import HomeReducer from './home/reducers/reducer';
-import PeopleReducer from './peoples/reducers/reducer';
+import PeoplesReducer from './peoples/reducers/reducer';
 import { sliderNext, sliderPrev, sliderAutoSwitch, sliderResetSwitchTime } from './home/actions/actionsSlider';
 import * as peopleActions from './peoples/actions/actions';
 
@@ -49,7 +49,7 @@ const PeoplesContainer = (props) => (
 )
 
 const sagaMiddleware = createSagaMiddleware();
-const reducer = combineReducers({HomeReducer, PeopleReducer, routing:routerReducer});
+const reducer = combineReducers({HomeReducer, peoples:PeoplesReducer, routing:routerReducer});
 let store = createStore(reducer,applyMiddleware(sagaMiddleware));
 sagaMiddleware.run(saga);
 

@@ -16,14 +16,16 @@ class Peoples extends Component {
         let filter = this.props.filter;
         let searchQuery = (filter=="")?"":"&search="+filter;
         if(page > this.props.lastPage) return this.gotoNewUrl(this.props.lastPage, this.props.filter);
-        if(this.props.fetchPeoples) this.props.fetchPeoples(page, filter);
+        this.fetchData();
     }
 
-    componentWillUpdate(nextProps){
-        let page = nextProps.currentPage;
-        let filter = nextProps.filter;
-        if(nextProps.currentPage > nextProps.lastPage) return this.gotoNewUrl(nextProps.lastPage, nextProps.filter);
-        if(this.props.currentPage != page || this.props.filter != filter) this.props.fetchPeoples(page, filter);
+    componentDidUpdate(prevProps){
+        if(this.props.currentPage > this.props.lastPage) return this.gotoNewUrl(this.props.lastPage, this.props.filter);
+        if(this.props.currentPage != prevProps.currentPage || this.props.filter != prevProps.filter) this.fetchData();
+    }
+
+    fetchData(){
+        if(this.props.fetchPeoples) this.props.fetchPeoples(this.props.currentPage, this.props.filter);
     }
 
     onSearch(value){
@@ -51,7 +53,7 @@ class Peoples extends Component {
 }
 
 function mapStateToProps(state) {
-    return state.PeopleReducer;
+    return state.peoples.gallery;
 }
 
 function mapDispatchToProps(dispatch) {

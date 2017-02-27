@@ -1,61 +1,70 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-import data from "../../data.js";
-import moment from 'moment';
+import PeopleHeader from './PeopleHeader';
+import AsideItem from '../../common/components/AsideItem';
+import { StringUtils } from '../../utils/tools';
 
 class PeoplePage extends Component{
     constructor(props){
         super(props);
-        this.people = this.props.people;
     }
 
-    renderDates(){
-        if(!this.people.birthDate) return "";
+    unescapeHTML(escapedHTML) {
+        return escapedHTML.replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&amp;/g,'&');
+    }
 
-        if(this.people.deathDate){
-            let birthDate = moment(new Date(this.people.birthDate)).format("YYYY");
-            let deathDate = moment(new Date(this.people.deathDate)).format("YYYY");
-            return <span>{birthDate+" - "+deathDate}</span>
-        }
-        else{
-            let birthDate = moment(new Date(this.people.birthDate)).format("LL");
-            let age = moment(new Date(this.people.birthDate)).fromNow(true);
-            return <span>{birthDate+" ("+age+")"}</span>
-        }
+    renderRelatedPeoples(){
+        var peoples = this.props.relatedPeoples.map(function(people, i){
+            var fullName = StringUtils.slug((people.firstName+" "+people.lastName));
+            return (
+                    <Link to={ '/peoples/' + people.id + '/' + fullName } key = {"linkTo"+people.id}>
+                    <div className="circle-picture small">
+                        <img src={ "../../img/portraits/" + people.picture } alt={ people.firstName + " " + people.lastName } />
+                        <div className="old-filter"></div>
+                    </div>
+                    </Link>
+                )
+        }.bind(this));
+        return peoples;
+    }
+
+    renderAside(){
+        return (
+            <div className = "article-aside">
+                <AsideItem id="relatedPeoples" title = "Autres acteurs TV">
+                    {this.renderRelatedPeoples()}
+                </AsideItem>
+                <AsideItem id="podcasts" title = "Derniers podcasts" />
+            </div>
+        )
+    }
+
+    renderBiography(){
+        if(!this.props.people.biography) return <article className = "article-content"></article>
+        return (
+            <article className = "article-content">
+                <div className = "article-content__title">
+                    <h1>PORTRAIT</h1>
+                    <p className = "meta">
+                        <i className = { "i-calendar"} />
+                        <time dateTime="2010-07-03" itemProp="dateCreated">{this.props.people.biography.dateCreated}</time>
+                        <span>{" // "}</span>
+                        <span itemProp = "author">{this.props.people.biography.author}</span>
+                    </p>
+                </div>
+                <div className = { "article-content__content" } dangerouslySetInnerHTML={{__html: this.unescapeHTML(this.props.people.biography.text)}}/>
+            </article>
+        )
     }
 
     render(){
-        if(!this.people) return <div></div>
-        let fullName = this.people.firstName + " " + this.people.lastName;
-        let tagItems = this.people.tags.map(function(tag, i){
-            return <div className={ 'tag-label' }>{tag}</div>
-        }.bind(this));
-        let birthDate = new Date(this.people.birthDate);
+        if(!this.props.people) return <div></div>
         return (
             <div id={ 'people' }>
-                <div className = { "header-content" } >
-                    <ul className = { "breadcrumb" }>
-                        <li><Link to='/'>{ "Accueil" }</Link></li>
-                        <li><Link to='/Peoples'>{ "Portraits" }</Link></li>
-                        <li className={ 'current' }>{ fullName }</li>
-                    </ul>
-                    <div className = { "header-content__content" }>
-                        <figure>
-                            <div className="circle-picture big">
-                                <img src={ "../../img/portraits/" + this.people.picture } alt={ fullName } />
-                                <div className="old-filter"></div>
-                            </div>
-                            <figcaption>{this.renderDates()}</figcaption>
-                        </figure>
-                        <article>
-                            <h1>{ fullName }</h1>
-                            <h5><div dangerouslySetInnerHTML={{__html: this.people.summary}}/></h5>
-                            <div className='people__tags'>
-                                {tagItems}
-                            </div>
-                        </article>
-                    </div>
-                </div>
+                <PeopleHeader people = { this.props.people } />
+                <div className = "tabs"></div>
+                {this.renderBiography()}
+                {this.renderAside()}
             </div>
         )
     }
