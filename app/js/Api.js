@@ -23,6 +23,16 @@ export default function api(type, args) {
             url = 'http://localhost:3000/peoples?_page=1&id_ne='+args.id;
             opts = {method:'GET'};
             break;
+        case peopleActions.FETCH_NEXT_PEOPLE:
+            if (!args || !args.fullName || !args.id) return;
+            url = 'http://localhost:3000/peoples?_sort=lastName&_order=ASC&lastName_gte='+args.fullName+'&id_ne='+args.id+'&_limit=1';
+            opts = {method:'GET'};
+            break;
+        case peopleActions.FETCH_PREV_PEOPLE:
+            if (!args || !args.fullName || !args.id) return;
+            url = 'http://localhost:3000/peoples?_sort=lastName&_order=DESC&lastName_lte='+args.fullName+'&id_ne='+args.id+'&_limit=1';
+            opts = {method:'GET'};
+            break;
         default:
             url = "";
     }

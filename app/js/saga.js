@@ -6,10 +6,49 @@ import {getPeoples} from './selectors';
 
 function *fetchPeople(action) {
    try {
+      const id = action.peopleId;
       const peopleData = yield call(api, peopleActions.FETCH_PEOPLE, {id:action.peopleId});
       yield put({type: peopleActions.PEOPLE_RECEIVED, people: peopleData.data});
+      if(!peopleData.data) return;
+
+      let fullName = peopleData.data.lastName+peopleData.data.firstName;
+      //fetch next people
+         try{
+              const nextPeopleData = yield call(api, peopleActions.FETCH_NEXT_PEOPLE, {id:id, fullName:fullName});
+              let next = null;
+              if(nextPeopleData.data && nextPeopleData.data.length>0) next = nextPeopleData.data[0];
+              yield put({type: peopleActions.NEXT_PEOPLE_RECEIVED, people: next});
+          } catch (e) {
+              yield put({type: peopleActions.NEXT_PEOPLE_FAILED, message: e.message});
+          }
+          try{
+              const prevPeopleData = yield call(api, peopleActions.FETCH_PREV_PEOPLE, {id:id, fullName:fullName});
+              let prev = null;
+              if(prevPeopleData.data && prevPeopleData.data.length>0) prev = prevPeopleData.data[0];
+              yield put({type: peopleActions.PREV_PEOPLE_RECEIVED, people: prev});
+          } catch (e) {
+              yield put({type: peopleActions.PREV_PEOPLE_FAILED, message: e.message});
+          }
    } catch (e) {
       yield put({type: peopleActions.PEOPLE_FETCH_FAILED, message: e.message});
+   }
+}
+
+function *fetchNextPeople(action) {
+   try {
+      const peopleData = yield call(api, peopleActions.FETCH_NEXT_PEOPLE, {id:action.id, fullName:action.fullName});
+      yield put({type: peopleActions.NEXT_PEOPLE_RECEIVED, people: peopleData.data});
+   } catch (e) {
+      yield put({type: peopleActions.NEXT_PEOPLE_FAILED, message: e.message});
+   }
+}
+
+function *fetchPrevPeople(action) {
+   try {
+      const peopleData = yield call(api, peopleActions.FETCH_PREV_PEOPLE, {id:action.id, fullName:action.fullName});
+      yield put({type: peopleActions.PREV_PEOPLE_RECEIVED, people: peopleData.data});
+   } catch (e) {
+      yield put({type: peopleActions.PREV_PEOPLE_FAILED, message: e.message});
    }
 }
 
@@ -27,7 +66,7 @@ function *fetchPeoples(action) {
 
 function *fetchRelatedPeoples(action) {
    try {
-      const peoplesData = yield call(api, peopleActions.FETCH_RELATED_PEOPLES, {id:action.id});
+      const peoplesData = yield call(api, peopleActions.FETCH_RELATED_PEOPLES, {id:action.currentId});
       yield put({type: peopleActions.RELATED_PEOPLES_RECEIVED, peoples: peoplesData.data});
    } catch (e) {
       yield put({type: peopleActions.PEOPLES_FETCH_FAILED, message: e.message});

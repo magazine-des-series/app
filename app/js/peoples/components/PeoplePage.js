@@ -61,7 +61,7 @@ class PeoplePage extends Component{
         if(!this.props.people) return <div></div>
         return (
             <div id={ 'people' }>
-                <PeopleHeader people = { this.props.people } />
+                <PeopleHeader people = { this.props.people } prev = { this.props.prev } next = { this.props.next }/>
                 <div className = "tabs"></div>
                 {this.renderBiography()}
                 {this.renderAside()}

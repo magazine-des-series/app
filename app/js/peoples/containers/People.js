@@ -30,7 +30,12 @@ class People extends Component {
     }
 
     render(){
-        return <PeoplePage people = {this.props.current} relatedPeoples = {this.props.relatedPeoples} />
+        return <PeoplePage
+                    people = { this.props.current }
+                    prev={ this.props.prev }
+                    next = { this.props.next }
+                    relatedPeoples = {this.props.relatedPeoples}
+                />
     }
 }
 
