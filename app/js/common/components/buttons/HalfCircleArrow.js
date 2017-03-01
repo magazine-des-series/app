@@ -2,15 +2,21 @@ import React, {Component} from 'react';
 
 class HalfCircleArrow extends Component{
     renderArrow(){
-        return <i className = { "i-chevron-"+this.props.direction } />
+        return <i className = { "arrow i-chevron-"+this.props.direction } />
     }
     render(){
         return(
             <div className = { "half-circle-arrow "+this.props.direction }>
-                <div className = "half">
-                    <div className = "circle">{this.renderArrow()}</div>
-                </div>
-                <div className = "title">{this.props.title}</div>
+                    <div className = "half">
+                        <div className = "circle"></div>
+                    </div>
+                    <div className = "content">
+                        <div className = "table">
+                            <div className = "cell" >{this.props.children}</div>
+                        </div>
+                        {this.renderArrow()}
+                    </div>
+
             </div>
         )
     }
@@ -18,7 +24,6 @@ class HalfCircleArrow extends Component{
 
 HalfCircleArrow.defaultProps = {
     direction : "left",
-    title : ""
 }
 
 module.exports = HalfCircleArrow;

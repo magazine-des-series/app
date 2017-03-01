@@ -28,8 +28,17 @@ class PeopleHeader extends Component{
         if(!this.props.prev) return "";
         let fullName = StringUtils.slug((this.props.prev.firstName+" "+this.props.prev.lastName));
         return (
-            <Link to={ '/peoples/'+this.props.prev.id+'/'+fullName } >
-                <HalfCircleArrow direction = "left" title = { this.props.prev.firstName+" "+this.props.prev.lastName } />
+            <Link key={"prev"+this.props.prev.id} to={ '/peoples/'+this.props.prev.id+'/'+fullName } >
+                <HalfCircleArrow direction = "left">
+                    <div className = "text">
+                        <div className = "subTitle" >Portrait précédent</div>
+                        <div className = "title" >{ this.props.prev.firstName+" "+this.props.prev.lastName }</div>
+                    </div>
+                    <div className="circle-picture tiny">
+                        <img src={ "../../img/portraits/" + this.props.prev.picture } alt={  this.props.prev.firstName+" "+this.props.prev.lastName } />
+                        <div className="old-filter"></div>
+                    </div>
+                </HalfCircleArrow>
             </Link>
         )
     }
@@ -38,8 +47,17 @@ class PeopleHeader extends Component{
         if(!this.props.next) return "";
         let fullName = StringUtils.slug((this.props.next.firstName+" "+this.props.next.lastName));
         return (
-            <Link to={ '/peoples/'+this.props.next.id+'/'+fullName } >
-                <HalfCircleArrow direction = "right" title = { this.props.next.firstName+" "+this.props.next.lastName } />
+            <Link key={"next"+this.props.next.id} to={ '/peoples/'+this.props.next.id+'/'+fullName } >
+                <HalfCircleArrow direction = "right">
+                    <div className="circle-picture tiny">
+                        <img src={ "../../img/portraits/" + this.props.next.picture } alt={  this.props.next.firstName+" "+this.props.next.lastName } />
+                        <div className="old-filter"></div>
+                    </div>
+                    <div className = "text">
+                        <div className = "subTitle" >Portrait suivant</div>
+                        <div className = "title" >{ this.props.next.firstName+" "+this.props.next.lastName }</div>
+                    </div>
+                </HalfCircleArrow>
             </Link>
         )
     }

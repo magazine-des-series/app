@@ -1,11 +1,13 @@
 .half-circle-arrow{
-    display:inline-block;
-    vertical-align:middle;
     position:absolute;
     cursor:pointer;
-    opacity:0.75;
     transition:all ease 0.2s;
-    .circle, .title{
+
+    & > *{
+        display:inline-block;
+        vertical-align:top;
+    }
+    .circle, .content{
         background-color:$old-white;
         @extend %oldified;
         height:70px;
@@ -15,17 +17,29 @@
     .half{
         width:35px;
         height:70px;
-        overflow:hidden;
-        display:inline-block;
-        vertical-align:top;
     }
     .circle{
-        z-index:5;
         border-radius:50%;
         width:70px;
         position:relative;
-
-        i{
+        box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.2);
+    }
+    .content{
+        position:relative;
+        padding:0px 5px;
+        transition:all ease 0.2s;
+        color:$light-brown;
+        .table{
+            display:inline-table;
+            height:100%;
+        }
+        .cell{
+            display:table-cell;
+            vertical-align:middle;
+        }
+        i.arrow{
+            position:absolute;
+            top:0;
             line-height:70px;
             font-size:36px;
             color:$brown;
@@ -35,38 +49,48 @@
             margin-left:5px;
         }
     }
-    .title{
-        line-height:70px;
-        padding:0px;
-        text-transform:uppercase;
-        font-size:16px;
-        font-weight:bold;
-        max-width:0px;
-        transition:all ease 0.2s;
-        overflow:hidden;
-        position:relative;
-        color:$light-brown;
-    }
-    &:hover{
-        opacity:1;
-        .title{
-            max-width:200px;
-            padding:0px 20px;
+    &.right{
+        right:0;
+        transform:translateY(-50%) translateX(calc(100% - 35px));
+        i.arrow{
+            left:-35px;
         }
-
     }
     &.left{
+        left:0;
+        transform:translateY(-50%) translateX(calc(-100% + 35px));
+        i.arrow{
+            right:-35px;
+        }
         .half{
             float:right;
         }
         .circle{
             transform:translateX(-50%);
-            i{
-                margin-left:30px;
+        }
+        .content{
+            float:left;
+        }
+    }
+    &:hover{
+        transform:translateY(-50%);
+        &.left{
+            i.arrow{
+                right:inherit;
+                left:0;
+            }
+            .content .table{
+                transform:translateX(35px);
             }
         }
-        .title{
-            float:left;
+        &.right{
+            i.arrow{
+                left:inherit;
+                right:0;
+            }
+            .content .table{
+                transform:translateX(-35px);
+            }
         }
     }
 }
