@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
+import { Link, browserHistory } from 'react-router';
 import PeopleHeader from './PeopleHeader';
 import AsideItem from '../../common/components/AsideItem';
 import { StringUtils } from '../../utils/tools';
@@ -19,7 +19,7 @@ class PeoplePage extends Component{
             return (
                     <Link to={ '/peoples/' + people.id + '/' + fullName } key = {"linkTo"+people.id}>
                     <div className="circle-picture small">
-                        <img src={ "../../img/portraits/" + people.picture } alt={ people.firstName + " " + people.lastName } />
+                        <img src={ "/img/portraits/" + people.picture } alt={ people.firstName + " " + people.lastName } />
                         <div className="old-filter"></div>
                     </div>
                     </Link>
@@ -38,23 +38,47 @@ class PeoplePage extends Component{
             </div>
         )
     }
-
-    renderBiography(){
-        if(!this.props.people.biography) return <article className = "article-content"></article>
+    renderArticle(index){
+        if(!index) index = 0;
+        if(this.props.people.articles.length <= index){
+            return <article className = "article-content"></article>
+        }
+        let article = this.props.people.articles[index];
         return (
             <article className = "article-content">
                 <div className = "article-content__title">
-                    <h1>PORTRAIT</h1>
+                    <h1>{article.title}</h1>
                     <p className = "meta">
                         <i className = { "i-calendar"} />
-                        <time dateTime="2010-07-03" itemProp="dateCreated">{this.props.people.biography.dateCreated}</time>
+                        <time dateTime="2010-07-03" itemProp="dateCreated">{article.dateCreated}</time>
                         <span>{" // "}</span>
-                        <span itemProp = "author">{this.props.people.biography.author}</span>
+                        <span itemProp = "author">{article.author}</span>
                     </p>
                 </div>
-                <div className = { "article-content__content" } dangerouslySetInnerHTML={{__html: this.unescapeHTML(this.props.people.biography.text)}}/>
+                <div className = { "article-content__content" } dangerouslySetInnerHTML={{__html: this.unescapeHTML(article.text)}}/>
             </article>
         )
+    }
+
+    renderTabs(){
+        var tabs = this.props.people.articles.map(function(article, i){
+            var url = "/peoples/"+this.props.params.id+"/"+this.props.params.fullName;
+            var current = (this.props.params.article == i || (!this.props.params.article && i==0));
+            if(i>0) url += "/"+i;
+            return (
+                <Link to={ url } key = {"linkTo"+i}>
+                    <div className = {"tab "+(current?"current":"")}>{article.title}</div>
+                </Link>
+            )
+        }.bind(this));
+        if(tabs.length>1){
+            return (
+                <div className = "articles-tabs">
+                    {tabs}
+                </div>
+            )
+        }
+        return "";
     }
 
     render(){
@@ -62,8 +86,8 @@ class PeoplePage extends Component{
         return (
             <div id={ 'people' }>
                 <PeopleHeader people = { this.props.people } prev = { this.props.prev } next = { this.props.next }/>
-                <div className = "tabs"></div>
-                {this.renderBiography()}
+                {this.renderTabs()}
+                {this.renderArticle(this.props.params.article)}
                 {this.renderAside()}
             </div>
         )

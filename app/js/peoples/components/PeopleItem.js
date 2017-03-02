@@ -17,7 +17,7 @@ class PeopleItem extends Component {
             <div className = "people-item">
                 <Link to={ '/peoples/' + this.props.user.id + '/' + fullName }>
                 <div className="circle-picture">
-                    <img src={ "../../img/portraits/" + this.props.user.picture } alt={ this.props.user.firstName + " " + this.props.user.lastName } />
+                    <img src={ "/img/portraits/" + this.props.user.picture } alt={ this.props.user.firstName + " " + this.props.user.lastName } />
                     <div className="old-filter"></div>
                 </div>
                 <div className="tag-label"> { tags } </div>

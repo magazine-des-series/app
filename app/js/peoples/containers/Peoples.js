@@ -15,12 +15,12 @@ class Peoples extends Component {
         let page = this.props.currentPage;
         let filter = this.props.filter;
         let searchQuery = (filter=="")?"":"&search="+filter;
-        if(page > this.props.lastPage) return this.gotoNewUrl(this.props.lastPage, this.props.filter);
+        if(page > this.props.lastPage) return this.replaceUrl(this.props.lastPage, this.props.filter);
         this.fetchData();
     }
 
     componentDidUpdate(prevProps){
-        if(this.props.currentPage > this.props.lastPage) return this.gotoNewUrl(this.props.lastPage, this.props.filter);
+        if(this.props.currentPage > this.props.lastPage) return this.replaceUrl(this.props.lastPage, this.props.filter);
         if(this.props.currentPage != prevProps.currentPage || this.props.filter != prevProps.filter) this.fetchData();
     }
 
@@ -29,11 +29,19 @@ class Peoples extends Component {
     }
 
     onSearch(value){
-        this.gotoNewUrl(this.props.currentPage, value);
+        if(this.props.filter == "") this.gotoNewUrl(this.props.currentPage, value);
+        else this.replaceUrl(this.props.currentPage, value);
+
     }
 
     changePage(page){
         this.gotoNewUrl(page, this.props.filter);
+    }
+
+    replaceUrl(page, filter){
+        let searchQuery = (filter=="")?"":"&search="+filter;
+        let url = "/peoples?page="+page+searchQuery;
+        browserHistory.replace(url);
     }
 
     gotoNewUrl(page, filter){

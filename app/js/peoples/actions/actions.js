@@ -20,8 +20,6 @@ export const RELATED_PEOPLES_FAILED = "RELATED_PEOPLES_FAILED";
 export const NEXT_PEOPLE_FAILED = "NEXT_PEOPLE_FAILED";
 export const PREV_PEOPLE_FAILED = "PREV_PEOPLE_FAILED";
 
-export const CHANGE_PAGE = "CHANGE_PAGE";
-
 
 /*
  * action creators
@@ -68,8 +66,4 @@ export function receivePrevPeople(people){
 
 export function receiveNextPeople(people){
     return { type : NEXT_PEOPLE_RECEIVED, data : people }
-}
-
-export function changePage(page){
-    return {type : CHANGE_PAGE, page : page }
 }

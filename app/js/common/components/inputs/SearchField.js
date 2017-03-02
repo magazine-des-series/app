@@ -19,6 +19,10 @@ class SearchField extends Component {
         }
     }
 
+    componentWillReceiveProps(nextProps){
+        this.setState({value:nextProps.value});
+    }
+
 
     normalizeInput() {
         return this.state.value.toLowerCase().trim();

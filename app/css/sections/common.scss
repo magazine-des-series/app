@@ -135,6 +135,7 @@
     min-height:100px;
     box-shadow: 0 0px 19px 0 rgba(0, 0, 0, 0.5);
     h1{
+        text-transform:uppercase;
         font-size:48px;
         font-family:'Montserrat', sans-serif;
         font-weight:700;
@@ -218,5 +219,41 @@ i{
     }
     @include max-screen($medium) {
         display:none;
+    }
+}
+
+.articles-tabs{
+    width:calc(70% - 30px);
+    margin-left:30px;
+    border-bottom:1px solid rgba($old-white, 0.5);
+    text-align:right;
+}
+.tab{
+    text-transform:uppercase;
+    color:$old-white;
+    font-size:18px;
+    font-weight:300;
+    display:inline-block;
+    padding:5px 10px;
+    transition:all ease 0.3s;
+    position:relative;
+    cursor:pointer;
+    &:after{
+        content:"";
+        position:absolute;
+        width:0;
+        transition:all ease 0.3s;
+        height:5px;
+        background-color:$orange;
+        bottom:-3px;
+        left:50%;
+        transform:translateX(-50%);
+    }
+    &.current{
+        color:$orange;
+        font-weight:600;
+        &:after{
+            width:100%;
+        }
     }
 }

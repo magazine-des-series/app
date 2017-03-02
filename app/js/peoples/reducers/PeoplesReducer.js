@@ -20,6 +20,9 @@ export default function gallery(state = initialState, action){
             if(pathname != "/peoples") return state;
             let newPage = query.page || 1;
             let filter = query.search || "";
+            console.log("location change");
+            console.log(filter);
+            console.log(newPage);
             if (newPage == state.currentPage && filter == state.filter) return state;
             else return Object.assign( {}, state, {currentPage:newPage, filter:filter} );
         default:

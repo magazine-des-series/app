@@ -35,7 +35,7 @@ class PeopleHeader extends Component{
                         <div className = "title" >{ this.props.prev.firstName+" "+this.props.prev.lastName }</div>
                     </div>
                     <div className="circle-picture tiny">
-                        <img src={ "../../img/portraits/" + this.props.prev.picture } alt={  this.props.prev.firstName+" "+this.props.prev.lastName } />
+                        <img src={ "/img/portraits/" + this.props.prev.picture } alt={  this.props.prev.firstName+" "+this.props.prev.lastName } />
                         <div className="old-filter"></div>
                     </div>
                 </HalfCircleArrow>
@@ -50,7 +50,7 @@ class PeopleHeader extends Component{
             <Link key={"next"+this.props.next.id} to={ '/peoples/'+this.props.next.id+'/'+fullName } >
                 <HalfCircleArrow direction = "right">
                     <div className="circle-picture tiny">
-                        <img src={ "../../img/portraits/" + this.props.next.picture } alt={  this.props.next.firstName+" "+this.props.next.lastName } />
+                        <img src={ "/img/portraits/" + this.props.next.picture } alt={  this.props.next.firstName+" "+this.props.next.lastName } />
                         <div className="old-filter"></div>
                     </div>
                     <div className = "text">
@@ -73,14 +73,14 @@ class PeopleHeader extends Component{
                 <div className = { "header-content" } >
                     <ul className = { "breadcrumb" }>
                         <li><Link to='/'>{ "Accueil" }</Link></li>
-                        <li><Link to='/Peoples'>{ "Portraits" }</Link></li>
+                        <li><Link to='/peoples'>{ "Portraits" }</Link></li>
                         <li className={ 'current' }>{ fullName }</li>
                     </ul>
                     <div className = { "header-content__content" }>
                         { this.renderPrevArrow() }
                         <figure>
                             <div className="circle-picture big">
-                                <img src={ "../../img/portraits/" + this.props.people.picture } alt={ fullName } />
+                                <img src={ "/img/portraits/" + this.props.people.picture } alt={ fullName } />
                                 <div className="old-filter"></div>
                             </div>
                             <figcaption>{this.renderDates()}</figcaption>

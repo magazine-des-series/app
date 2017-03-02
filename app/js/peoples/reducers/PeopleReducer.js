@@ -6,7 +6,7 @@ const initialState = {
     current : null,
     prev : null,
     next : null,
-    relatedPeoples : []
+    relatedPeoples : [],
 }
 
 export default function people(state = initialState, action){
