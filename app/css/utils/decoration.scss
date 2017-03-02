@@ -85,11 +85,11 @@
             @if $position == "top" {
                 top:0;
                 border-width: 0 0 10px $decalX;
-                border-color: transparent transparent $brown transparent;
+                border-color: transparent transparent $dark-brown transparent;
             }@else {
                 bottom:0;
                 border-width: 0 $decalX 10px 0;
-                border-color: transparent $brown transparent transparent;
+                border-color: transparent $dark-brown transparent transparent;
             }
         }
     }
@@ -100,11 +100,11 @@
             @if $position == "top" {
                 top:0;
                 border-width: 10px 0 0 $decalX;
-                border-color: transparent transparent transparent $brown;
+                border-color: transparent transparent transparent $dark-brown;
             }@else {
                 bottom:0;
                 border-width: 0 0 10px $decalX;
-                border-color: transparent transparent transparent $brown;
+                border-color: transparent transparent transparent $dark-brown;
             }
         }
     }

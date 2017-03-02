@@ -1,8 +1,7 @@
 .half-circle-arrow{
     position:absolute;
     cursor:pointer;
-    transition:all ease 0.2s;
-
+    transition:all ease 0.3s 0.2s;
     & > *{
         display:inline-block;
         vertical-align:top;
@@ -27,17 +26,19 @@
     .content{
         position:relative;
         padding:0px 5px;
-        transition:all ease 0.2s;
+        transition:all ease 0.5s 0.2s;
         color:$light-brown;
         .table{
             display:inline-table;
             height:100%;
+            transition:all ease 0.3s 0.2s;
         }
         .cell{
             display:table-cell;
             vertical-align:middle;
         }
         i.arrow{
+            transition:all ease 0.2s 0.2s;
             position:absolute;
             top:0;
             line-height:70px;
@@ -46,21 +47,21 @@
             width:35px;
             text-align:center;
             display:inline-block;
-            margin-left:5px;
         }
     }
     &.right{
-        right:0;
-        transform:translateY(-50%) translateX(calc(100% - 35px));
+        right:35px;
+        transform:translateY(-50%) translateX(100%);
         i.arrow{
-            left:-35px;
+            left:-30px;
         }
     }
     &.left{
-        left:0;
-        transform:translateY(-50%) translateX(calc(-100% + 35px));
+        left:35px;
+        transform:translateY(-50%) translateX(-100%);
         i.arrow{
-            right:-35px;
+            //right:-35px;
+            left:calc(100% - 5px);
         }
         .half{
             float:right;
@@ -75,8 +76,8 @@
     &:hover{
         transform:translateY(-50%);
         &.left{
+            left:0;
             i.arrow{
-                right:inherit;
                 left:0;
             }
             .content .table{
@@ -84,9 +85,9 @@
             }
         }
         &.right{
+            right:0;
             i.arrow{
-                left:inherit;
-                right:0;
+                left : calc(100% - 35px);
             }
             .content .table{
                 transform:translateX(-35px);

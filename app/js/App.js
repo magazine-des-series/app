@@ -37,8 +37,9 @@ const Container = (props) =>
         <div className="main-container">
             { props.children }
         </div>
+        <Footer />
     </ScrollArea>
-    <Footer />
+
 </div>
 
 //PEOPLES CONTAINER

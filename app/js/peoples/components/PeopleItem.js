@@ -21,10 +21,14 @@ class PeopleItem extends Component {
                     <div className="old-filter"></div>
                 </div>
                 <div className="tag-label"> { tags } </div>
-                <h4>
-                    {this.props.user.firstName}
-                    <span className="lastName">{ " "+this.props.user.lastName }</span>
-                </h4>
+                <div className = "fullName">
+                    <div className = "cell">
+                        <h4>
+                            {this.props.user.firstName}
+                            <span className="lastName">{ " "+this.props.user.lastName }</span>
+                        </h4>
+                    </div>
+                </div>
             </Link>
             </div>
         )
