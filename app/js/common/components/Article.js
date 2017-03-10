@@ -9,12 +9,12 @@ class Article extends Component{
     componentWillEnter (callback) {
         const el = this.container;
         TweenMax.set(el, {position:"absolute", opacity:0});
-        TweenMax.set(el, {clearProps:"all", delay:0.3});
-        TweenMax.fromTo(el, 0.3, {opacity:0},{opacity:1,onComplete: callback, delay:0.3});
+        TweenMax.set(el, {clearProps:"all", delay:0.5});
+        TweenMax.fromTo(el, 0.5, {opacity:0},{opacity:1,onComplete: callback, delay:0.5});
     }
     componentWillLeave (callback) {
         const el = this.container;
-        TweenMax.to(el, 0.3, {opacity:0,onComplete: callback});
+        TweenMax.to(el, 0.5, {opacity:0,onComplete: callback});
     }
 
     unescapeHTML(escapedHTML) {

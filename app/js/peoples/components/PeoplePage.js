@@ -17,9 +17,12 @@ class PeoplePage extends Component{
             var fullName = StringUtils.slug((people.firstName+" "+people.lastName));
             return (
                     <Link to={ '/peoples/' + people.id + '/' + fullName } key = {"linkTo"+people.id}>
-                    <div className="circle-picture small">
-                        <img src={ "/img/portraits/" + people.picture } alt={ people.firstName + " " + people.lastName } />
-                        <div className="old-filter"></div>
+                    <div className = "people-mini">
+                        <div className="circle-picture small">
+                            <img src={ "/img/portraits/" + people.picture } alt={ people.firstName + " " + people.lastName } />
+                            <div className="old-filter"></div>
+                        </div>
+                        <div className = "infoBulle">{ people.firstName + " " + people.lastName }</div>
                     </div>
                     </Link>
                 )
@@ -73,7 +76,7 @@ class PeoplePage extends Component{
             <div id={ 'people' }>
                 <PeopleHeader people = { this.props.people } prev = { this.props.prev } next = { this.props.next }/>
                 {this.renderTabs()}
-                <TransitionGroup className = "article-container">
+                <TransitionGroup component = "div" className = "article-container">
                     {this.renderArticle(this.props.params.article)}
                 </TransitionGroup>
                 {this.renderAside()}

@@ -128,16 +128,21 @@
     width:calc(70% - 30px);
     display:inline-block;
     overflow:hidden;
+    margin-top:10px;
+    margin-left:30px;
+    @include max-screen($medium) {
+        width:calc(100% - 40px);
+        margin-left:20px;
+    }
 }
 
 .article-content{
+    box-shadow: 0 0px 19px 0 rgba(0, 0, 0, 0.5);
+    width:100%;
     transform-origin : center top;
-    margin-top:20px;
-    margin-left:30px;
     @extend %oldified;
     padding:30px 70px 30px 50px;
-    background-color:$old-white;
-    box-shadow: 0 0px 19px 0 rgba(0, 0, 0, 0.5);
+    background-color:white;
     h1{
         text-transform:uppercase;
         font-size:48px;
@@ -147,8 +152,6 @@
         padding : 0;
     }
     @include max-screen($medium) {
-        width:calc(100% - 40px);
-        margin-left:20px;
         padding:30px ;
     }
     @include max-screen($small) {
@@ -189,7 +192,7 @@ i{
     margin-left:20px;
     display:inline-block;
     vertical-align:top;
-    margin-top:20px;
+    margin-top:10px;
     position:relative;
     &:before{
         content:"";
@@ -221,6 +224,34 @@ i{
             font-weight:800;
         }
     }
+    .people-mini{
+        display:inline-block;
+        position:relative;
+        .circle-picture{
+            transform:scale(1);
+            transition:all ease 0.3s;
+        }
+        .infoBulle{
+            transition:all ease 0.3s;
+            position:absolute;
+            background-color:$orange;
+            color:white;
+            padding:5px;
+            font-size:10px;
+            top:100%;
+            left:50%;
+            transform:translate(-50%, -100%) scale(0);
+            min-width:100%;
+        }
+        &:hover{
+            .circle-picture{
+                transform:scale(1.5);
+            }
+            .infoBulle{
+                transform:translate(-50%, -100%) scale(1);
+            }
+        }
+    }
     @include max-screen($medium) {
         display:none;
     }
@@ -229,8 +260,13 @@ i{
 .articles-tabs{
     width:calc(70% - 30px);
     margin-left:30px;
+    margin-top:10px;
     border-bottom:1px solid rgba($old-white, 0.5);
     text-align:right;
+    @include max-screen($medium) {
+        width:calc(100% - 40px);
+        margin-left:20px;
+    }
 }
 .tab{
     text-transform:uppercase;
