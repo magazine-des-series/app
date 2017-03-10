@@ -124,15 +124,19 @@
     }
 }
 
+.article-container{
+    width:calc(70% - 30px);
+    display:inline-block;
+    overflow:hidden;
+}
+
 .article-content{
+    transform-origin : center top;
     margin-top:20px;
     margin-left:30px;
     @extend %oldified;
     padding:30px 70px 30px 50px;
-    width:calc(70% - 30px);
-    display:inline-block;
     background-color:$old-white;
-    min-height:100px;
     box-shadow: 0 0px 19px 0 rgba(0, 0, 0, 0.5);
     h1{
         text-transform:uppercase;

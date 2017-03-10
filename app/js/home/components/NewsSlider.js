@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react/addons';
 import NewsItem from './NewsItem';
-import TransitionGroup from 'react-addons-transition-group';
+const TransitionGroup = React.addons.TransitionGroup;
 
 class NewsSlider extends Component {
     constructor(props){
