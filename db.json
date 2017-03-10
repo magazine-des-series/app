@@ -36,6 +36,13 @@
                 "title" : "Filmographie",
                 "dateCreated" : "2015-02-02",
                 "author" : "Christophe Dordain"
+            },
+            {
+                "type" : "filmography",
+                "text" : "1997 - Le pr&amp;eacute;dicateur (Robert Duvall)&lt;/p&gt;&lt;p class=&quot;f-default&quot; align=&quot;justify&quot;&gt;2000 - Docteur T et les femmes (Robert Altman)&lt;/p&gt;&lt;p class=&quot;f-default&quot; align=&quot;justify&quot;&gt;2004 - The Cookout (Lance Riviera)&lt;/p&gt;&lt;p class=&quot;f-default&quot; align=&quot;justify&quot;&gt;&amp;nbsp;&lt;/p&gt;&lt;p class=&quot;f-default&quot; align=&quot;center&quot;&gt;{mosimage}&lt;/p&gt;",
+                "title" : "Filmographie 2",
+                "dateCreated" : "2015-02-02",
+                "author" : "Christophe Dordain"
             }
         ]
     },

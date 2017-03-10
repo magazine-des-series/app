@@ -1,16 +1,15 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react/addons';
 import { Link, browserHistory } from 'react-router';
 import PeopleHeader from './PeopleHeader';
 import AsideItem from '../../common/components/AsideItem';
+import Article from '../../common/components/Article';
 import { StringUtils } from '../../utils/tools';
+
+const TransitionGroup = React.addons.TransitionGroup;
 
 class PeoplePage extends Component{
     constructor(props){
         super(props);
-    }
-
-    unescapeHTML(escapedHTML) {
-        return escapedHTML.replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&amp;/g,'&');
     }
 
     renderRelatedPeoples(){
@@ -44,20 +43,7 @@ class PeoplePage extends Component{
             return <article className = "article-content"></article>
         }
         let article = this.props.people.articles[index];
-        return (
-            <article className = "article-content">
-                <div className = "article-content__title">
-                    <h1>{article.title}</h1>
-                    <p className = "meta">
-                        <i className = { "i-calendar"} />
-                        <time dateTime="2010-07-03" itemProp="dateCreated">{article.dateCreated}</time>
-                        <span>{" // "}</span>
-                        <span itemProp = "author">{article.author}</span>
-                    </p>
-                </div>
-                <div className = { "article-content__content" } dangerouslySetInnerHTML={{__html: this.unescapeHTML(article.text)}}/>
-            </article>
-        )
+        return <Article key = {"article"+index} article = {article} />
     }
 
     renderTabs(){
@@ -87,7 +73,9 @@ class PeoplePage extends Component{
             <div id={ 'people' }>
                 <PeopleHeader people = { this.props.people } prev = { this.props.prev } next = { this.props.next }/>
                 {this.renderTabs()}
-                {this.renderArticle(this.props.params.article)}
+                <TransitionGroup className = "article-container">
+                    {this.renderArticle(this.props.params.article)}
+                </TransitionGroup>
                 {this.renderAside()}
             </div>
         )
