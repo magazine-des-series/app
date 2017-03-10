@@ -1,64 +1,70 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-import data from "../../data.js";
 import moment from 'moment';
+import PeoplePage from '../components/PeoplePage';
+import { connect } from 'react-redux';
+import { createStore, bindActionCreators } from 'redux';
+import * as actions from '../actions/actions';
+import { browserHistory } from 'react-router';
 
 class People extends Component {
     constructor(props){
         super(props);
-        this.people = data.getPeopleById(this.props.params.id);
+        this.people = null;
+
     }
 
-    renderDates(){
-        if(!this.people.birthDate) return "";
+    componentDidMount(){
+        this.fetchData(this.props.params.id);
+        this.checkCurrentArticle();
+    }
 
-        if(this.people.deathDate){
-            let birthDate = moment(new Date(this.people.birthDate)).format("YYYY");
-            let deathDate = moment(new Date(this.people.deathDate)).format("YYYY");
-            return <span>{birthDate+" - "+deathDate}</span>
+    componentDidUpdate(prevProps){
+        if(prevProps.params.id != this.props.params.id){
+            this.fetchData();
         }
-        else{
-            let birthDate = moment(new Date(this.people.birthDate)).format("LL");
-            let age = moment(new Date(this.people.birthDate)).fromNow(true);
-            return <span>{birthDate+" ("+age+")"}</span>
-        }
+        this.checkCurrentArticle();
+    }
+
+    checkCurrentArticle(){
+    /*    if(this.props.current){
+            if(this.props.current.articles.length <= this.props.params.article && this.props.art>0){
+                browserHistory.replace(this.props.location.pathname);
+            }
+        }*/
+    }
+
+    fetchData(){
+        if(this.props.fetchPeople && this.props.params.id) this.props.fetchPeople(this.props.params.id);
+        if(this.props.fetchRelatedPeoples && this.props.params.id) this.props.fetchRelatedPeoples(this.props.params.id);
     }
 
     render(){
-        if(!this.people) return <div></div>
-        let fullName = this.people.firstName + " " + this.people.lastName;
-        let tagItems = this.people.tags.map(function(tag, i){
-            return <div className={ 'tag-label' }>{tag}</div>
-        }.bind(this));
-        let birthDate = new Date(this.people.birthDate);
-        return (
-            <div id={ 'people' }>
-                <div className = { "header-content" } >
-                    <ul className = { "breadcrumb" }>
-                        <li><Link to='/'>{ "Accueil" }</Link></li>
-                        <li><Link to='/Peoples'>{ "Portraits" }</Link></li>
-                        <li className={ 'current' }>{ fullName }</li>
-                    </ul>
-                    <div className = { "header-content__content" }>
-                        <figure>
-                            <div className="circle-picture big">
-                                <img src={ "../../img/portraits/" + this.people.picture } alt={ fullName } />
-                                <div className="old-filter"></div>
-                            </div>
-                            <figcaption>{this.renderDates()}</figcaption>
-                        </figure>
-                        <article>
-                            <h1>{ fullName }</h1>
-                            <h5><div dangerouslySetInnerHTML={{__html: this.people.summary}}/></h5>
-                            <div className='people__tags'>
-                                {tagItems}
-                            </div>
-                        </article>
-                    </div>
-                </div>
-            </div>
-        )
+        return <PeoplePage
+                    people = { this.props.current }
+                    prev={ this.props.prev }
+                    next = { this.props.next }
+                    showArticle = { this.props.showArticle }
+                    relatedPeoples = {this.props.relatedPeoples}
+                    location = {this.props.location}
+                    params = {this.props.params}
+                />
     }
 }
 
-module.exports = People;
+function mapStateToProps(state) {
+    return state.peoples.people;
+}
+
+function mapDispatchToProps(dispatch) {
+    return({
+        fetchPeople:function(id){
+            dispatch(actions.fetchPeople(id));
+        },
+        fetchRelatedPeoples:function(id){
+            dispatch(actions.fetchRelatedPeoples(id));
+        }
+    })
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(People);

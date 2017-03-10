@@ -3,7 +3,6 @@ import { Link } from 'react-router';
 import SearchField from '../../common/components/inputs/SearchField';
 import PeopleItem from './PeopleItem'
 import { StringUtils } from '../../utils/tools';
-import data from "../../data.js";
 
 
 class PeoplesGallery extends Component {
@@ -12,12 +11,14 @@ class PeoplesGallery extends Component {
     }
 
     onSearch(value){
-        console.log(value);
+        if(this.props.onSearch) this.props.onSearch(value);
     }
 
     render(){
-        var items = data.getPeoples().map(function(people, i){
-            return <PeopleItem key={ "people"+i } user={ people } />
+        var itemsData = this.props.data;
+        if( !itemsData) itemsData = [];
+        var items = itemsData.map(function(people, i){
+            return <PeopleItem key={ "people"+i } user ={ people } />
         }.bind(this));
         return (
             <div id={ 'peoples' }>
@@ -34,7 +35,7 @@ class PeoplesGallery extends Component {
                     </h5>
                     <div className = { "header-content__search-bar" }>
                         <i className = { "i-search"} />
-                            <SearchField placeholder = "Rechercher une personnalité" onChange = {this.onSearch.bind(this)} />
+                            <SearchField value = { this.props.searchText } placeholder = "Rechercher une personnalité" onChange = {this.onSearch.bind(this)} />
                     </div>
                 </div>
                 <div>{items}</div>

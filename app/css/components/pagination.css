@@ -1,0 +1,76 @@
+.pagination{
+    margin-top:0px 10px;
+    ul{
+        display:block;
+        text-align:center;
+    }
+    li{
+        display:inline-block;
+        vertical-align:middle;
+        box-sizing:border-box;
+        border-radius:50%;
+        width:36px;
+        height:36px;
+        border:2px solid rgba($old-white, 0.3);
+        line-height:32px;
+        color:$yellow;
+        position:relative;
+        margin:0px 10px;
+        font-size:18px;
+        font-weight:300;
+        transition:all ease 0.2s;
+        cursor:default;
+        &:not(.current):not(.empty){
+            cursor:pointer;
+        }
+        &:before, &:after{
+            transition:all ease 0.2s;
+            content:"";
+            display:inline-block;
+            width:10px;
+            height:2px;
+            position:absolute;
+            top:calc(50% - 1px);
+            background-color:rgba($old-white, 0.3);
+        }
+        &.empty{
+            color:rgba($old-white, 0.3);
+            span{
+                display:block;
+                font-size:24px;
+                line-height:32px;
+                transform:translateY(-5px);
+            }
+        }
+
+        &:before{
+            left:-2px;
+            transform:translateX(-100%);
+        }
+        &:after{
+            left:calc(100% + 2px);
+        }
+        &:first-child{
+            &:before{
+                width:40px!important;
+            }
+        }
+        &:last-child{
+            &:after{
+                width:40px!important;
+            }
+        }
+        &.current{
+            border-color:$orange;
+            color:$orange;
+            width:48px;
+            height:48px;
+            line-height:44px;
+            font-size:24px;
+            margin:0px 4px;
+            &:before, &:after{
+                width:4px;
+            }
+        }
+    }
+}

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import {Router, Route, IndexRoute, Link, browserHistory} from 'react-router';
+import 'babel-polyfill';
+import {Router, Route, IndexRoute, DefaultRoute, Link, browserHistory} from 'react-router';
 import Peoples from './peoples/containers/Peoples';
 import Series from './shows/containers/Series';
 import Concours from './contests/containers/Concours';
@@ -11,11 +12,18 @@ import People from "./peoples/containers/People";
 import style from '../css/main.scss';
 import ScrollArea from 'react-scrollbar';
 import moment from 'moment';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
-import sliderReducer from './home/reducers/sliderReducer';
-import { sliderNext, sliderPrev, sliderAutoSwitch, sliderResetSwitchTime } from './home/actions/actionsSlider'
+import { syncHistoryWithStore, routerReducer } from 'react-router-redux';
 
+import createSagaMiddleware from 'redux-saga';
+import saga from './saga';
+import HomeReducer from './home/reducers/reducer';
+import PeoplesReducer from './peoples/reducers/reducer';
+import { sliderNext, sliderPrev, sliderAutoSwitch, sliderResetSwitchTime } from './home/actions/actionsSlider';
+import * as peopleActions from './peoples/actions/actions';
+
+// MAIN CONTAINER
 const Container = (props) =>
 <div>
     <Header />
@@ -29,35 +37,28 @@ const Container = (props) =>
         <div className="main-container">
             { props.children }
         </div>
+        <Footer />
     </ScrollArea>
-    <Footer />
+
 </div>
-let datas = [
-    {
-        name:"L'île fantastique",
-        image:"https://placeholdit.imgix.net/~text?txtsize=33&txt=480%C3%97270&w=480&h=270",
-        dateCreated:"3 juillet 2010",
-        author:"Thierry le Peut, Christophe Dordain",
-        description:"Mr Roarke est un milliardaire excentrique, propriétaire d'une île au coeur de l'océan Pacifique afin d'y accueillir les touristes et de réaliser leur désir le plus cher. Si la plupart du temps, il s'agit de trouver l'Amour, ces fantasmes sont toutefois variés : problèmes familiaux, d'identité, mal-être, ou encore trouver un certain équilibre, sont des thèmes abordés. ",
-        id:1
-    },
-    {
-        name:"L'île fantastique 2",
-        image:"https://placeholdit.imgix.net/~text?txtsize=33&txt=480%C3%97270&w=480&h=270",
-        dateCreated:"3 juillet 2010",
-        author:"Thierry le Peut, Christophe Dordain",
-        description:"Mr Roarke est un milliardaire excentrique, propriétaire d'une île au coeur de l'océan Pacifique afin d'y accueillir les touristes et de réaliser leur désir le plus cher. Si la plupart du temps, il s'agit de trouver l'Amour, ces fantasmes sont toutefois variés : problèmes familiaux, d'identité, mal-être, ou encore trouver un certain équilibre, sont des thèmes abordés. ",
-        id:2
-    }
-];
-let store = createStore(sliderReducer,{navigationReducer:{items:datas, currentIndex:0}});
+
+//PEOPLES CONTAINER
+const PeoplesContainer = (props) => (
+  <div>
+    {props.children}
+  </div>
+)
+
+const sagaMiddleware = createSagaMiddleware();
+const reducer = combineReducers({HomeReducer, peoples:PeoplesReducer, routing:routerReducer});
+let store = createStore(reducer,applyMiddleware(sagaMiddleware));
+sagaMiddleware.run(saga);
+
 let unsubscribe = store.subscribe(() =>
   console.log(store.getState())
 )
-store.dispatch(sliderNext());
-store.dispatch(sliderNext());
-store.dispatch(sliderNext());
-store.dispatch(sliderNext());
+
+const history = syncHistoryWithStore(browserHistory, store);
 
 class App extends Component {
     constructor(props){
@@ -71,12 +72,13 @@ class App extends Component {
       render() {
         return (
             <Provider store={store}>
-                <Router history={ browserHistory }>
+                <Router history={ history }>
                     <Route path="/" component={Container}>
                         <IndexRoute component={Home} />
                         <Route path="/series" component={Series}/>
-                        <Route path="/peoples" component={Peoples}>
-                            <Route path="/peoples(/:id)(/:fullName)" component={People}/>
+                        <Route path="/peoples" component={PeoplesContainer} params = {{page:1}}>
+                            <IndexRoute component={Peoples} />
+                            <Route path="/peoples(/:id)(/:fullName)(/:article)(/:articleTitle)" component={People}/>
                         </Route>
                         <Route path="/concours" component={Concours}/>
                         <Route path="/podcasts" component={Podcasts}/>

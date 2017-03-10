@@ -22,7 +22,7 @@ class Header extends Component{
                     </div>
                     <div className="ribbon-right" />
                 </nav>
-                <Link to='/'><img className="header-main__logo" src="../../img/logo_small.png" alt="Logo" /></Link>
+                <Link to='/'><img className="header-main__logo" src="/img/logo_small.png" alt="Logo" /></Link>
             </header>
         )
     }

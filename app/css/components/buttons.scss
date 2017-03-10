@@ -1,0 +1,97 @@
+.half-circle-arrow{
+    position:absolute;
+    cursor:pointer;
+    transition:all ease 0.3s 0.2s;
+    & > *{
+        display:inline-block;
+        vertical-align:top;
+    }
+    .circle, .content{
+        background-color:$old-white;
+        @extend %oldified;
+        height:70px;
+        display:inline-block;
+        vertical-align:top;
+    }
+    .half{
+        width:35px;
+        height:70px;
+    }
+    .circle{
+        border-radius:50%;
+        width:70px;
+        position:relative;
+        box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.2);
+    }
+    .content{
+        position:relative;
+        padding:0px 5px;
+        transition:all ease 0.5s 0.2s;
+        color:$light-brown;
+        .table{
+            display:inline-table;
+            height:100%;
+            transition:all ease 0.3s 0.2s;
+        }
+        .cell{
+            display:table-cell;
+            vertical-align:middle;
+        }
+        i.arrow{
+            transition:all ease 0.2s 0.2s;
+            position:absolute;
+            top:0;
+            line-height:70px;
+            font-size:36px;
+            color:$brown;
+            width:35px;
+            text-align:center;
+            display:inline-block;
+        }
+    }
+    &.right{
+        right:35px;
+        transform:translateY(-50%) translateX(100%);
+        i.arrow{
+            left:-30px;
+        }
+    }
+    &.left{
+        left:35px;
+        transform:translateY(-50%) translateX(-100%);
+        i.arrow{
+            //right:-35px;
+            left:calc(100% - 5px);
+        }
+        .half{
+            float:right;
+        }
+        .circle{
+            transform:translateX(-50%);
+        }
+        .content{
+            float:left;
+        }
+    }
+    &:hover{
+        transform:translateY(-50%);
+        &.left{
+            left:0;
+            i.arrow{
+                left:0;
+            }
+            .content .table{
+                transform:translateX(35px);
+            }
+        }
+        &.right{
+            right:0;
+            i.arrow{
+                left : calc(100% - 35px);
+            }
+            .content .table{
+                transform:translateX(-35px);
+            }
+        }
+    }
+}
