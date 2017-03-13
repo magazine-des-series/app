@@ -99,4 +99,7 @@ class PeopleHeader extends Component{
     }
 }
 
+PeopleHeader.defaultProps = {
+    people:React.PropTypes.object
+}
 module.exports = PeopleHeader;
