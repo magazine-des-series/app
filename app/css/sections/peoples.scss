@@ -28,19 +28,6 @@
     & *{
         transition:all ease 0.2s!important;
     }
-    .circle-picture{
-        position:relative;
-        border-radius:50%;
-        overflow:hidden;
-        width:180px;
-        height:180px;
-        img{
-            width:164px;
-            height:164px;
-            border-radius:50%;
-            border:8px solid rgba($old-white,0.3);
-        }
-    }
     .fullName{
         height:46px;
         display:table;
@@ -61,18 +48,16 @@
         overflow:hidden;
     }
     .tag-label{
+        position:relative;
+        z-index:3;
         @extend .z-depth-2;
-
         width:auto;
         transform:translateY(-20px);
     }
     &:hover{
         transform:translateY(-10px);
         .circle-picture{
-            @extend .z-depth-5;
-            img{
-                border:8px solid rgba($beige,0.75);
-            }
+            @extend %circle-picture-hover;
         }
         .cell{
             background-color:$beige;

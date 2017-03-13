@@ -227,10 +227,6 @@ i{
     .people-mini{
         display:inline-block;
         position:relative;
-        .circle-picture{
-            transform:scale(1);
-            transition:all ease 0.3s;
-        }
         .infoBulle{
             transition:all ease 0.3s;
             position:absolute;
@@ -245,7 +241,7 @@ i{
         }
         &:hover{
             .circle-picture{
-                transform:scale(1.5);
+                @extend %circle-picture-hover;
             }
             .infoBulle{
                 transform:translate(-50%, -100%) scale(1);
