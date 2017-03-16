@@ -8,7 +8,7 @@ class HalfCircleArrow extends Component {
  * @returns {component} icon
  */
   renderArrow() {
-    return <i className = {`arrow i-chevron- ${this.props.direction}`} />;
+    return <i className = {`arrow i-chevron-${this.props.direction}`} />;
   }
 
   /** @inheritdoc */

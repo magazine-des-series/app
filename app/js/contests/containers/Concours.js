@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
 
+/**
+ * Contest component
+ */
 class Concours extends Component {
-    render(){
-        return (
-            <div>
-                <h1>Concours</h1>
-            </div>
-        )
-    }
+  /** @inheritdoc */
+  render() {
+    return (
+      <div>
+        <h1>Concours</h1>
+      </div>
+    );
+  }
 }
 
 module.exports = Concours;

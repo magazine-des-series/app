@@ -22,6 +22,8 @@
         }
     }],
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/prefer-stateless-function": [1],
+    "react/forbid-prop-types": [1],
     //spacing
     "react/jsx-equals-spacing": [2, "always"],
     "no-trailing-spaces": [2, { "skipBlankLines": true }],

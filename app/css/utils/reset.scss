@@ -22,7 +22,7 @@ a {
 div, article, section{
     box-sizing:border-box;
 }
-input{
+input, button{
     border:none;
     background:none;
     outline:none;
@@ -43,4 +43,17 @@ input{
 :-ms-input-placeholder { /* Internet Explorer 10-11 */
     color:    inherit;
     opacity: 0.4;
+}
+
+button{
+  background: none repeat scroll 0 0 transparent;
+  border: medium none;
+  border-spacing: 0;
+  font-weight: normal;
+  list-style: none outside none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  text-decoration: none;
+  text-indent: 0;
 }
