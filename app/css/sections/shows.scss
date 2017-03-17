@@ -1,0 +1,129 @@
+@for $i from 1 through 10 {
+    $rotation: random(10) - 5;
+    @if ($rotation >= 0 and $rotation <2) {
+        $rotation: random(2) + 2;
+    }
+    @elseif ($rotation <= 0 and $rotation >-2) {
+        $rotation: random(2) + 2;
+        $rotation: - $rotation;
+    }
+    .show-item:nth-of-type(#{$i}) {
+        &:hover{
+            .tag-label{
+                transform:translateY(-20px) rotate(#{$rotation}deg);
+            }
+        }
+    }
+}
+
+.show-item{
+    display:inline-block;
+    vertical-align:top;
+    position:relative;
+    text-align:center;
+    margin:30px 20px;
+    cursor:pointer;
+    transition:all ease .4s;
+    transform:translateY(0px);
+    & *{
+        transition:all ease 0.2s!important;
+    }
+    .fullName{
+        height:46px;
+        display:table;
+        width:100%;
+        .cell{
+            display:table-cell;
+            vertical-align:middle;
+            height:46px;
+            border-top:1px solid $yellow;
+            border-bottom:1px solid $yellow;
+        }
+    }
+    h4{
+        padding:2px 5px;
+        max-width:180px;
+        max-height:46px;
+        line-height:16px;
+        overflow:hidden;
+    }
+    .tag-label{
+        position:relative;
+        z-index:3;
+        @extend .z-depth-2;
+        width:auto;
+        transform:translateY(-20px);
+    }
+    &:hover{
+        transform:translateY(-10px);
+        .circle-picture{
+            @extend %circle-picture-hover;
+        }
+        .cell{
+            background-color:$beige;
+            transform:scale(1.05);
+            h4{
+                color:$brown;
+            }
+        }
+    }
+}
+#show{
+    .header-content{
+        h1{
+            border-bottom:2px dashed $orange;
+            padding-bottom:30px;
+        }
+        figure, article{
+            display:table-cell;
+            vertical-align:middle;
+        }
+        figure{
+            width:300px;
+            text-align:center;
+            .circle-picture{
+                margin-left:auto;
+                margin-right:auto;
+            }
+            figcaption{
+                margin-top:5px;
+                color:rgba(white,0.5);
+                text-align:center;
+                font-size:12px;
+                .i-calendar{
+                    font-size : 14px;
+                    margin-right:5px;
+                }
+            }
+        }
+        article{
+            padding:0px 0px 0px 30px;
+        }
+        @include max-screen($small) {
+            figure, article{
+                display:block;
+            }
+            figure{
+                width:100%;
+                margin-bottom:20px;
+            }
+            article{
+                padding:0;
+            }
+        }
+    }
+    .show__tags{
+        margin:10px 0px;
+        @include max-screen($small) {
+            text-align:center;
+        }
+    }
+    #relatedPeoples{
+        text-align:center;
+        .circle-picture{
+            display:inline-block;
+            margin:10px;
+        }
+    }
+
+}

@@ -13,7 +13,7 @@ module.exports = {
     path : path.join(__dirname, 'dist'),
     filename : '[name].js',
     // publicPath: "/",
-    publicPath : 'http://localhost:8080',
+    publicPath : 'http://localhost:8080/',
   },
   plugins : [
     new webpack.HotModuleReplacementPlugin(),

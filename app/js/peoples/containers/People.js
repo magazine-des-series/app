@@ -31,6 +31,7 @@ class People extends Component {
   render() {
     return (
       <PeoplePage
+        key = {`people${this.props.current ? this.props.current.id : ''}`}
         people = {this.props.current}
         prev = {this.props.prev}
         next = {this.props.next}

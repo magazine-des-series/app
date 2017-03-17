@@ -229,8 +229,111 @@
         "articles" : []
     }
   ],
-  "articles" : [
-
+  "shows" : [
+    {
+      "id": 1,
+      "title": "Le fugitif",
+      "picture": "fugitif.jpg",
+      "tags": ["années 60","action"],
+      "summary" : "Condamné pour le meurtre de sa femme Hélène, le docteur Richard Kimble s'évade à la suite d'un accident. Le train qui le transportait vers la prison ayant opportunément déraillé. Commence alors sa longue fuite à travers les Etats-Unis pour éviter la police représentée par lieutenant Philip Gerard.",
+      "articles" : []
+    },
+    {
+      "id": 2,
+      "title": "Le saint",
+      "picture": "saint.jpg",
+      "tags": ["années 60","action"],
+      "summary" : "A la fin de l'année 1961, le romancier Leslie Charteris accepte enfin de vendre les droits de ses ouvrages pour une adaptation à la télévision. C'est Robert S. Baker, en partenariat avec la firme ITC dirigée par Lew Grade, qui va se charger de la production de la série. Retour sur un classique du petit écran.",
+      "articles" : []
+    },
+    {
+      "id": 3,
+      "title": "L'homme d'Amsterdam",
+      "picture": "homme_amsterdam.jpg",
+      "tags": ["années 70","action"],
+      "summary" : "Pierre Vermeer, à la fois archéologue et passionné d'énigmes policières aide son frère, commissaire de police, à résoudre ses enquêtes. Il bénéficie, à chaque fois, du concours de sa fille adoptive Helen, hôtesse de l'air de son état...",
+      "articles" : []
+    },
+    {
+      "id": 4,
+      "title": "Le magicien",
+      "picture": "magicien.jpg",
+      "tags": ["années 70","action"],
+      "summary" : "Enfermé dans une prison sud-américaine pour un crime qu'il n'a pas commis, Anthony Blake parvient à s'en échapper en compagnie d'un vieil homme avec lequel il s'est lié d'amitié. Ce dernier, à sa mort, lui lègue une fortune estimée à plusieurs centaines de millions de dollars. Ainsi, Blake a-t-il les moyens nécessaires pour se transformer en un justicier des temps modernes, et pour venir au secours de personnes victimes d'injustices tout comme lui l'a été par le passé...",
+      "articles" : []
+    },
+    {
+      "id": 5,
+      "title": "Matt Helm",
+      "picture": "matt_helm.jpg",
+      "tags": ["années 70","action"],
+      "summary" : "Matt Helm est un ancien espion reconverti en détective privé et basé à Los Angeles. Aidé de l'avocate Claire Kronski et du sergent de police Hanharan, Helm tente de résoudre des énigmes qui, très souvent, mettent sa vie en péril ainsi que son courage à rude contribution.",
+      "articles" : []
+    },
+    {
+      "id": 6,
+      "title": "Poigne de fer et séduction",
+      "picture": "poigne_de_fer.jpg",
+      "tags": ["années 70","action"],
+      "summary" : "Une équipe issue d’une organisation internationale de détectives – appelée The Protectors - parcourt le monde et traque les réseaux criminels. Composée de trois personnalités (l’Américain Harry Rule, le Français Paul Buchet et la Comtesse Caroline de Contini, une Italienne d’adoption), elle loue ses services au-delà des frontières aux gouvernements ou aux particuliers aisés. Complémentaires, ces trois protagonistes associent ainsi leurs talents dans cette série d’action britannique typique des années 70.",
+      "articles" : []
+    },
+    {
+      "id": 7,
+      "title": "The duke",
+      "picture": "duke.jpg",
+      "tags": ["années 70","action"],
+      "summary" : "Dans cette série produite par Universal et confiée à Stephen J. Cannell, Robert Conrad incarne un ancien boxeur reconverti en détective privé. A ses côtés, ses complices Larry Manetti et Red West. Comme la première saison de Dallas un an plus tôt, The Duke est un programme de remplacement, conçu pour ne durer que quelques semaines. Mais, au contraire de la saga texane qui sera reconduite et deviendra un hit, The Duke disparaîtra après cet unique tour de piste. A mi-chemin entre Baretta et Deux cents dollars plus les frais, deux des créations les plus marquantes de Cannell durant les années 1970, The Duke permet à Robert Conrad d’incarner un personnage modelé sur sa propre personnalité, dans un environnement qu’il connaît bien puisque la série est filmée à Chicago, ville où il a grandi. C’est aussi l’une des rares séries à avoir abordé le monde de la boxe, dont est issu son héros.",
+      "articles" : []
+    },
+    {
+      "id": 8,
+      "title": "Agence tous risques",
+      "picture": "agence.jpg",
+      "tags": ["années 80","action"],
+      "summary" : "Comme la plupart des productions frappées du label Stephen J. Cannell, Agence Tous Risques (titre original : The A-Team, terme qui désignait des unités d'élite pendant la guerre du Viêtnam) n'a rien d'une série révolutionnaire. Maintes fois rediffusée depuis ses débuts, elle ne disputera cependant jamais la palme de meilleure série à un Twin Peaks, pas plus qu'elle ne gagnera un jour - quoique, de nos jours... - le statut de série-culte. Elle n'en est pas moins, selon les termes de son auteur, un agréable divertissement, tout à fait réussi dans son genre.\nLancée en 1983 sur NBC, Agence Tous Risques est née l'année précédente des imaginations conjuguées de Stephen J. Cannell et Frank Lupo. A l'époque, le premier est déjà connu pour quelques séries populaires comme Baretta et Deux Cents Dollars plus les Frais, et vient de créer quatre ans plus tôt sa propre maison de production à son nom. Quant au second, il a travaillé d'abord avec Glen A. Larson et Donald Bellisario sur Galactica, Galactica 1980 et Magnum, avant de rejoindre l'équipe de Stephen J. Cannell sur la série The Greatest American Hero. Il se fera connaître grâce à cette collaboration, poursuivie de manière fructueuse avec Riptide en 1984 et surtout Un Flic dans la Mafia en 1987. Seul, il sera à l'origine de la série Hunter (produite par Cannell) et fondera à son tour sa maison de production pour produire des séries telles que Duo d'Enfer, Le Monstre évadé de l'Espace et Raven.\nSérie d'aventures à mi-chemin entre la bande dessinée et le western, Agence Tous Risques doit son succès avant tout à un casting judicieux et à des héros bien trempés. Ce qui fait l'originalité (on verra qu'en réalité ce n'en est pas une...) de l'équipe vedette, c'est son caractère hétéroclite : un génie de la tactique militaire, un bricoleur culturiste, un fou volant authentiquement déjanté et un roublard talentueux composent un team dément, amateur d'action et d'aventure. Bien entendu, les choses ne sont pas toujours aussi simples : les plans prétendument « sans accroc » du fin stratège ne tiennent pas souvent la route, et le revirement final des situations les plus tordues est dû au moins autant à la chance et à la force qu'à la qualité du chef. Quant au talent d'escroc du Futé, il est plus souvent qu'à son tour pris en défaut. Avec tout ça, Barracuda a un caractère de cochon et Looping (Howling Mad - le Fou Hurlant, en v.o.) est constamment sur le point de perdre les pédales !",
+      "articles" : []
+    },
+    {
+      "id": 9,
+      "title": "L'homme au katana",
+      "picture": "katana.jpg",
+      "tags": ["années 80","action"],
+      "summary" : "1984. Un an plus tôt, NBC a lancé une série d’action d’inspiration volontairement « bande dessinée », qui casse la baraque : \"Agence Tous Risques\". Concept simple, cascades à gogo, héros sympathiques, la recette a fait mouche et le network espère peut-être renouveler l’expérience en commandant une nouvelle série d’action où des héros sans peur et sans reproche combattent les méchants partout où ils sévissent. C’est Michael Sloan, futur concepteur du \"Kung Fu\" nouvelle mouture, qui est chargé de donner forme à cette idée orientée arts martiaux et castagne.\nC’est en travaillant avec Glen A. Larson que Michael Sloan se fait remarquer à la fin des années 80 : producteur et scénariste sur \"Quincy\", on lui doit aussi (en partie) les scénarii de deux épisodes de \"Galactica\". C’est lui que Viacom, la société qui possède les studios Paramount, va chercher en 1982 pour ressusciter la série « culte » des années 60, \"Des Agents très spéciaux\", avec Robert Vaughn et David McCallum. Le résultat est un téléfilm intitulé chez nous \"Le retour des agents très spéciaux\" et de l’autre côté de l’Atlantique \"The Man from UNCLE : The Fifteen Years Later Affair\". Pour l’occasion, Sloan, qui possède désormais sa propre maison de production à son nom, travaille avec les producteurs Nigel Watts et Terry Morse, Jr ainsi qu’avec le réalisateur d’origine anglaise Ray Austin, ancien cascadeur reconverti dans la direction d’acteurs. C’est précisément ce quatuor qui concocte, moins d’un an après la diffusion du téléfilm sur CBS, en avril 1983, le nouveau concept de NBC où l’on retrouvera d’ailleurs, le temps d’un épisode, deux des acteurs principaux du Retour des agents très spéciaux, David McCallum et George Lazenby (c’est l’épisode « Otages »).",
+      "articles" : []
+    },
+    {
+      "id": 10,
+      "title": "Magnum",
+      "picture": "magnum.jpg",
+      "tags": ["années 80","action"],
+      "summary" : "A peine huit mois après la mise à la retraite de Steve McGarrett, la relève pointe déjà le bout de son nez. Et quelle relève ! Magnum est aujourd'hui intégrée au patrimoine télévisuel et encore encensée par la critique française qui voit en elle l'une des séries les plus abouties des années 80, alors qu'Hawaii Five-0 jouit d'une presse mitigée. Aux Etats-Unis, certains épisodes de la série sont même utilisés dans les universités pour illustrer des cours sur la guerre du Viêtnam, et les moustaches de Tom Selleck sont aussi célèbres que la Ferrari de Robin Masters ou les \"Par Saint-George ! \" d'Higgins. Retour sur un must de la fiction télé.",
+      "articles" : []
+    },
+    {
+      "id": 12,
+      "title": "Pour l'amour du risque",
+      "picture" : "amour_risque.jpg",
+      "tags": ["années 80","action"],
+      "summary" : "Les aventures de Jonathan et Jennifer Hart, un couple de milliardaires redresseur de torts. La recette : quelques scènes de poursuite, des révolvers, des cadavres qui trainent, de bonnes bouffes dans des restaurants chics, des déguisements, le petit déjeuner servi au lit par Max (l'homme à tout faire), des voitures de collection, etc.",
+      "articles" : []
+    },
+    {
+      "id": 13,
+      "title": "Supercopter",
+      "picture": "supercopter.jpg",
+      "tags": ["années 80","action"],
+      "summary" : "Plus rapide qu’un jet, ultra-armé, capable de parcourir la moitié de la surface terrestre avec un seul plein et seul hélicoptère pouvant aller au-delà de la stratosphère, Supercopter alias « Airwolf » est le plus sophistiqué des hélicoptères jamais construits. Lors d’un vol d’essai, il est volé par le pilote Stringfellow Hawke. Hawke déclare qu’il ne rendra l’appareil que si son frère St John, porté disparu au Vietnam, est retrouvé. Michael Coldsmith Briggs III alias “Archangel”, responsable de la firme qui a développé supercopter, offre son soutien à Hawke si celui-ci accepte de piloter l’appareil pour des missions d’intérêt national. Il sera aidé par son ami et mentor : Dominic Santini…",
+      "articles" : []
+    },
+    {
+      "id": 14,
+      "title": "Tonnerre Mécanique",
+      "picture": "tonnerre.jpg",
+      "tags": ["années 80","action"],
+      "summary" : "Jesse Mach, un motard de la police, est choisi pour piloter le Faucon, une moto de haute technologie capable de rouler à 300 miles à l’heure et contrôlée par un ordinateur perfectionné. Dissimulée sous une combinaison noire, son identité doit rester secrète et les missions qu’il doit remplir sont confidentielles. Zorro moderne monté sur un destrier d’un nouveau type, il devient pour tous... le Tonnerre Mécanique. Un justicier et peut-être un jour... une légende !",
+      "articles" : []
+    }
   ],
   "comments": [
     { "id": 1, "body": "some comment", "postId": 1 },

@@ -54,6 +54,50 @@ const api = {
     );
   },
 
+  /** SHOWS **/
+
+  fetchShow(id) {
+    const url = `http://localhost:3000/shows/${id}`;
+    const opts = { method : 'GET' };
+    return fetch(url, opts)
+      .then(resp => resp.json())
+      .then(data => ({ data }),
+    );
+  },
+
+  fetchShows(page = 1, filter = '') {
+    const url = `http://localhost:3000/shows?_page=${page}&_sort=title&title_like=${filter}`;
+    const opts = { method : 'GET' };
+    let total = 0;
+    return fetch(url, opts)
+      .then((resp) => {
+        total = resp.headers.get('X-Total-Count');
+        return resp.json();
+      })
+      .then(data => ({ data, total }),
+    );
+  },
+
+  fetchNextShow(id, title) {
+    if (!id || !title) return null;
+    const url = `http://localhost:3000/shows?_sort=title&_order=ASC&title_gte=${title}&id_ne=${id}&_limit=1`;
+    const opts = { method : 'GET' };
+    return fetch(url, opts)
+      .then(resp => resp.json())
+      .then(data => ({ data }),
+    );
+  },
+
+  fetchPrevShow(id, title) {
+    if (!id || !title) return null;
+    const url = `http://localhost:3000/shows?_sort=title&_order=DESC&title_lte=${title}&id_ne=${id}&_limit=1`;
+    const opts = { method : 'GET' };
+    return fetch(url, opts)
+      .then(resp => resp.json())
+      .then(data => ({ data }),
+    );
+  },
+
 };
 
 export default api;
