@@ -30,9 +30,7 @@ export const PREV_PEOPLE_FAILED = 'PREV_PEOPLE_FAILED';
   * @param {string} peopleId - people identifier
   * @returns {object} action
   */
-export function fetchPeople(peopleId) {
-  return { type : FETCH_PEOPLE, peopleId };
-}
+export const fetchPeople = peopleId => ({ type : FETCH_PEOPLE, peopleId });
 
 /**
  * Fetch a page of peoples
@@ -40,18 +38,14 @@ export function fetchPeople(peopleId) {
  * @param {string} [filter = ''] - query filter
  * @returns {object} action
  */
-export function fetchPeoples(page, filter) {
-  return { type : FETCH_PEOPLES, page : page || 1, filter : filter || '' };
-}
+export const fetchPeoples = (page, filter) => ({ type : FETCH_PEOPLES, page : page || 1, filter : filter || '' });
 
 /**
  * Fetch related peoples for a given identifier
   * @param {string} currentId - people identifier
  * @returns {object} action
  */
-export function fetchRelatedPeoples(currentId) {
-  return { type : FETCH_RELATED_PEOPLES, currentId };
-}
+export const fetchRelatedPeoples = currentId => ({ type : FETCH_RELATED_PEOPLES, currentId });
 
 /**
  * Fetch the people before a given identifier
@@ -59,9 +53,7 @@ export function fetchRelatedPeoples(currentId) {
   * @param {string} fullName - current people full name
  * @returns {object} action
  */
-export function fetchPrevPeople(id, fullName) {
-  return { type : FETCH_PREV_PEOPLE, id, fullName };
-}
+export const fetchPrevPeople = (id, fullName) => ({ type : FETCH_PREV_PEOPLE, id, fullName });
 
 /**
  * Fetch the people after a given identifier
@@ -69,6 +61,4 @@ export function fetchPrevPeople(id, fullName) {
   * @param {string} fullName - current people full name
  * @returns {object} action
  */
-export function fetchNextPeople(id, fullName) {
-  return { type : FETCH_NEXT_PEOPLE, id, fullName };
-}
+export const fetchNextPeople = (id, fullName) => ({ type : FETCH_NEXT_PEOPLE, id, fullName });
