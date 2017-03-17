@@ -1,14 +1,19 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router';
 
-class Footer extends Component{
-    render(){
-        return(
-            <footer className="footer-main">
+/**
+ * Footer component
+ */
+class Footer extends Component {
 
-            </footer>
-        )
-    }
+  /** @inheritdoc */
+  render() {
+    return (
+      <footer className = "footer-main">
+        <div />
+        <div />
+      </footer>
+    );
+  }
 }
 
 module.exports = Footer;

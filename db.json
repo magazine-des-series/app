@@ -93,7 +93,8 @@
         "deathDate" : "2002-04-16",
         "summary" : "Robert Urich est un acteur et producteur américain, né le 19 décembre 1946 à Toronto (Ohio) et mort le 16 avril 2002 à Thousand Oaks en Californie (États-Unis). Il était surtout connu pour le rôle de Dan Tanna, le détective privé de charme de la série Vegas chargé de démêler les intrigues imaginées par Michael Mann. De 1978 à 1981, il a interprété 66 fois le détective privé assisté par deux jolies secrétaires, Beatrice et Angie. Le succès de la série était tel à l'époque (Robert Urich était considéré comme l'homme le plus séduisant des USA) que de nombreuses vedettes y firent des apparitions, de Kim Basinger à Melanie Griffith, en passant par Stepfanie Kramer, Jill St. John, Dean Martin, Leslie Nielsen, Tony Curtis ou Mohamed Ali.",
         "biography" : null,
-        "filmography" : null
+        "filmography" : null,
+        "articles" : []
     },
     {
         "id": 7,
@@ -227,6 +228,9 @@
         "summary" : "Lorne Greene était un acteur canadien, né en 1915 à Ottawa. Dans les années 50, Greene quitte son pays, et part pour Hollywood qui lui demande, dans un premier temps, de faire le narrateur de quelques films. Plus tard, il trouve enfin des rôles : il interprète Othello dans une adaptation télévisée de 1953. Toutefois, sa première performance reconnue par le public restera son rôle de patriarche dans la série \"Bonanza\". Pendant 14 ans, du septembre 1959 au 16 janvier 1973, il restera l'un des cow-boys préférés des téléspectateurs. Originaire de Californie dans la série, marié à trois reprises, il est un solide propriétaire terrien. Il dirige avec efficacité le ranch de Ponderosa en s'appuyant sur l'aide bienvenue de ses trois solides gaillards que sont ses fils.",
         "articles" : []
     }
+  ],
+  "articles" : [
+
   ],
   "comments": [
     { "id": 1, "body": "some comment", "postId": 1 },

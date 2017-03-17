@@ -1,64 +1,75 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 
-const keyCodes = {
-    ENTER: 13,
-    ESCAPE: 27,
-    UP: 38,
-    DOWN: 40
-};
-
+/**
+ * Class for search field component
+ */
 class SearchField extends Component {
 
-    constructor(props){
-        super(props);
-        if (!props.onChange){
-            throw new Error('You have to assign a callback to "onChange" handler')
-        }
-        this.state = this.initialState = {
-            value : (this.props.value?this.props.value:""),
-        }
-    }
+  /** @inheritdoc */
+  constructor(props) {
+    super(props);
+    this.state = {
+      value : this.props.value,
+    };
+    this.initialState = Object.assign({}, this.state);
+    this.onChange = this.onChange.bind(this);
+  }
 
-    componentWillReceiveProps(nextProps){
-        this.setState({value:nextProps.value});
-    }
+  /** @inheritdoc */
+  componentWillReceiveProps(nextProps) {
+    this.setState({ value : nextProps.value });
+  }
 
-
-    normalizeInput() {
-        return this.state.value.toLowerCase().trim();
+  /**
+   * onChange handler
+   * @param {event} e : onChange event
+   * @listens event
+   * @returns {void}
+   */
+  onChange(e) {
+    const newValue = e.target.value;
+    if (!newValue) {
+      this.props.onChange('');
+      this.setState({ value : '' });
     }
+    this.setState({ value : newValue });
+    this.props.onChange(newValue);
+  }
 
-    onChange(e){
-        const value = e.target.value;
-        if (!value){
-           this.props.onChange("");
-           return this.setState({value:""});
-        }
-        this.setState({value:value});
-        if(this.props.onChange) this.props.onChange(value);
-    }
+  /**
+   * trim the input value
+   * @returns {string} value
+   */
+  normalizeInput() {
+    return this.state.value.toLowerCase().trim();
+  }
 
-    render(){
-        return (
-            <input
-                className = "search-input"
-                type = "text"
-                maxLength = "50"
-                autoComplete = "off"
-                value = { this.state.value }
-                placeholder = { this.props.placeholder }
-                onChange = { this.onChange.bind(this) }
-            />
-        )
-    }
+  /** @inheritdoc */
+  render() {
+    return (
+      <input
+        className = "search-input"
+        type = "text"
+        maxLength = "50"
+        autoComplete = "off"
+        value = {this.state.value}
+        placeholder = {this.props.placeholder}
+        onChange = {this.onChange}
+      />
+    );
+  }
 }
 
 SearchField.propTypes = {
-    placeholder : React.PropTypes.string
-}
+  placeholder : PropTypes.string,
+  value : PropTypes.string,
+  onChange : PropTypes.func.isRequired,
+};
 
 SearchField.defaultProps = {
-
-}
+  placeholder : null,
+  value : '',
+  onChange : null,
+};
 
 module.exports = SearchField;
