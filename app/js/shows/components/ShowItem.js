@@ -13,7 +13,7 @@ class ShowItem extends Component {
     return (
       <div className = "show-item">
         <Link to = {`/shows/${this.props.show.id}/${title}`}>
-          <div className = "circle-picture">
+          <div className = "landscape-picture">
             <img src = {`/img/shows/${this.props.show.picture}`} alt = {`${this.props.show.title}`} />
             <div className = "old-filter" />
           </div>

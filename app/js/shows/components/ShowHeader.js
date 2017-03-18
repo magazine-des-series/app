@@ -1,6 +1,5 @@
 import React, { PropTypes, Component } from 'react';
 import { Link } from 'react-router';
-import moment from 'moment';
 import { StringUtils } from '../../utils/tools';
 import HalfCircleArrow from '../../common/components/buttons/HalfCircleArrow';
 
@@ -60,7 +59,7 @@ class ShowHeader extends Component {
         <div className = "header-content__content">
           {this.renderPrevArrow()}
           <figure>
-            <div className = "circle-picture big">
+            <div className = "landscape-picture big">
               <img src = {`/img/shows/${this.props.show.picture}`} alt = {`${title}`} />
               <div className = "old-filter" />
             </div>

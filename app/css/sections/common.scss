@@ -95,6 +95,9 @@
 .header-content__content{
     display:table;
     width:100%;
+    .landscape-picture {
+      transform:rotate(-2deg);
+    }
 }
 
 .tag-label{
@@ -241,7 +244,7 @@ i{
         }
         &:hover{
             .circle-picture{
-                @extend %circle-picture-hover;
+                @extend %picture-hover;
             }
             .infoBulle{
                 transform:translate(-50%, -100%) scale(1);
