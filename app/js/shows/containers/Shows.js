@@ -23,7 +23,7 @@ class Shows extends Component {
 
     /** CHECK VALID PAGE NUMBER **/
     const page = this.props.currentPage;
-    if (page > this.props.lastPage) return this.changeURL(this.props.lastPage, this.props.filter, 'replace');
+    if (page > this.props.lastPage) return Shows.changeURL(this.props.lastPage, this.props.filter, 'replace');
 
     /** FETCH DATAS **/
     return this.fetchData();
@@ -91,6 +91,10 @@ Shows.defaultProps = {
   fetchShows : null,
 };
 
+Shows.contextTypes = {
+  scrollArea : React.PropTypes.object,
+};
+
 function mapStateToProps(state) {
   return state.shows.gallery;
 }
@@ -100,6 +104,9 @@ function mapDispatchToProps(dispatch) {
     fetchShows : function fetchShows(page, filter) {
       dispatch(actions.fetchShows(page, filter));
     },
+    updateScroll : function updateScroll() {
+
+    }
   });
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Shows);

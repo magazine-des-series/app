@@ -26,10 +26,7 @@ class ShowsGallery extends Component {
           </ul>
           <h1>Séries</h1>
           <h5>
-            Acteurs, scénaristes ou producteurs,
-            ils ont tous bâti à leur façon l’univers des séries d’hier et d’aujourd’hui...
-            <br />
-            Retrouvez ici les plus grands noms du petit écran !
+            {'Des années 50 à nos jours, retrouvez toutes vos séries préférées grâce à nos dossiers et nos guides d\'épisodes !'}
           </h5>
           <div className = "header-content__search-bar">
             <i className = "i-search" />
