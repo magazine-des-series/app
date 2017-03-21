@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import 'babel-polyfill';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
-import ScrollArea from 'react-scrollbar';
 import moment from 'moment';
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
@@ -26,31 +25,23 @@ import Home from './home/containers/Home';
 import '../css/main.scss';
 
 // MAIN CONTAINER
-const Container = (props) =>
-  <div>
+const Container = props =>
+  <div
+    className = "main-content"
+  >
     <Header />
-    <ScrollArea
-      speed = {0.8}
-      className = "main-content"
-      contentClassName = "content"
-      horizontal = {false}
-      vertical
-    >
-      <div className = "main-container">
-        { props.children }
-      </div>
-      <Footer />
-    </ScrollArea>
+    <div className = "main-container">
+      { props.children }
+    </div>
+    <Footer />
   </div>;
 
 Container.propTypes = {
   children : PropTypes.node,
-  location : PropTypes.object,
 };
 
 Container.defaultProps = {
   children : null,
-  location : null,
 };
 
 // SIMPLE CONTAINER

@@ -104,9 +104,6 @@ function mapDispatchToProps(dispatch) {
     fetchShows : function fetchShows(page, filter) {
       dispatch(actions.fetchShows(page, filter));
     },
-    updateScroll : function updateScroll() {
-
-    }
   });
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Shows);
