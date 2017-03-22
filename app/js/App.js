@@ -26,9 +26,7 @@ import '../css/main.scss';
 
 // MAIN CONTAINER
 const Container = props =>
-  <div
-    className = "main-content"
-  >
+  <div className = "main-content">
     <Header />
     <div className = "main-container">
       { props.children }
@@ -91,7 +89,7 @@ class App extends Component {
       <Provider store = {store}>
         <Router history = {history}>
           <Route path = "/" component = {Container}>
-            <IndexRoute component = {Home} />
+            <IndexRoute />
             <Route path = "/shows" params = {{ page : 1 }}>
               <IndexRoute component = {Shows} />
               <Route path = "/shows(/:id)(/:title)(/:article)(/:articleTitle)" component = {Show} />

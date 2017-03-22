@@ -14,7 +14,7 @@ class Home extends Component {
             <div className = "full" id = "home">
                 <section id = "home_news">
                     <div className = "home-news__background" />
-                    <img className = "home-news__logo" src="../../img/logo_big.png" alt="Logo" />
+                    <img className = "home-news__logo" src="/img/logo_big.png" alt="Logo" />
                     <div className = "home-news__content">
                         <h2>Zoom sur</h2>
                         <NewsSlider onClickHandler = {this.onClickHandler.bind(this)} items = {this.props.navigationReducer.items} currentIndex = {this.props.navigationReducer.currentIndex} />
