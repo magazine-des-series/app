@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import 'babel-polyfill';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
-import ScrollArea from 'react-scrollbar';
 import moment from 'moment';
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
@@ -11,33 +10,28 @@ import createSagaMiddleware from 'redux-saga';
 import saga from './saga';
 import HomeReducer from './home/reducers/reducer';
 import PeoplesReducer from './peoples/reducers/reducer';
+import ShowsReducer from './shows/reducers/reducer';
 
 import Peoples from './peoples/containers/Peoples';
-import Series from './shows/containers/Series';
+import People from './peoples/containers/People';
+import Shows from './shows/containers/Shows';
+import Show from './shows/containers/Show';
 import Concours from './contests/containers/Concours';
 import Podcasts from './podcasts/containers/Podcasts';
 import Header from './common/containers/Header';
 import Footer from './common/containers/Footer';
 import Home from './home/containers/Home';
-import People from './peoples/containers/People';
+
 import '../css/main.scss';
 
 // MAIN CONTAINER
 const Container = props =>
-  <div>
+  <div className = "main-content">
     <Header />
-    <ScrollArea
-      speed = {0.8}
-      className = "main-content"
-      contentClassName = "content"
-      horizontal = {false}
-      vertical
-    >
-      <div className = "main-container">
-        { props.children }
-      </div>
-      <Footer />
-    </ScrollArea>
+    <div className = "main-container">
+      { props.children }
+    </div>
+    <Footer />
   </div>;
 
 Container.propTypes = {
@@ -48,23 +42,28 @@ Container.defaultProps = {
   children : null,
 };
 
-// PEOPLE CONTAINER
-const PeoplesContainer = props => (
+// SIMPLE CONTAINER
+const SimpleContainer = props => (
   <div>
     {props.children}
   </div>
 );
 
-PeoplesContainer.propTypes = {
+SimpleContainer.propTypes = {
   children : PropTypes.node,
 };
 
-PeoplesContainer.defaultProps = {
+SimpleContainer.defaultProps = {
   children : null,
 };
 
 const sagaMiddleware = createSagaMiddleware();
-const reducer = combineReducers({ HomeReducer, peoples : PeoplesReducer, routing : routerReducer });
+const reducer = combineReducers({
+  HomeReducer,
+  peoples : PeoplesReducer,
+  shows : ShowsReducer,
+  routing : routerReducer,
+});
 const store = createStore(reducer, applyMiddleware(sagaMiddleware));
 sagaMiddleware.run(saga);
 
@@ -75,9 +74,9 @@ class App extends Component {
   static init() {
     const locale = window.navigator.userLanguage || window.navigator.language;
     moment.locale(locale);
-    /*store.subscribe(() =>
+    /* store.subscribe(() =>
       console.log(store.getState()),
-    );*/
+    ); */
   }
 
   constructor(props) {
@@ -90,9 +89,12 @@ class App extends Component {
       <Provider store = {store}>
         <Router history = {history}>
           <Route path = "/" component = {Container}>
-            <IndexRoute component = {Home} />
-            <Route path = "/series" component = {Series} />
-            <Route path = "/peoples" component = {PeoplesContainer} params = {{ page : 1 }}>
+            <IndexRoute />
+            <Route path = "/shows" params = {{ page : 1 }}>
+              <IndexRoute component = {Shows} />
+              <Route path = "/shows(/:id)(/:title)(/:article)(/:articleTitle)" component = {Show} />
+            </Route>
+            <Route path = "/peoples" component = {SimpleContainer} params = {{ page : 1 }}>
               <IndexRoute component = {Peoples} />
               <Route path = "/peoples(/:id)(/:fullName)(/:article)(/:articleTitle)" component = {People} />
             </Route>

@@ -1,22 +1,5 @@
-@for $i from 1 through 10 {
-    $rotation: random(10) - 5;
-    @if ($rotation >= 0 and $rotation <2) {
-        $rotation: random(2) + 2;
-    }
-    @elseif ($rotation <= 0 and $rotation >-2) {
-        $rotation: random(2) + 2;
-        $rotation: - $rotation;
-    }
-    .people-item:nth-of-type(#{$i}) {
-        &:hover{
-            .tag-label{
-                transform:translateY(-20px) rotate(#{$rotation}deg);
-            }
-        }
-    }
-}
-
-.people-item{
+.show-item{
+    width : 250px;
     display:inline-block;
     vertical-align:top;
     position:relative;
@@ -24,8 +7,10 @@
     margin:30px 20px;
     cursor:pointer;
     transition:all ease .4s;
-    transform:translateY(0px);
-    width:180px;
+    transform:translateY(0px) ;
+    .landscape-picture{
+      transform:rotate(-3deg);
+    }
     & *{
         transition:all ease 0.2s!important;
     }
@@ -57,7 +42,7 @@
     }
     &:hover{
         transform:translateY(-10px);
-        .circle-picture{
+        .landscape-picture{
             @extend %picture-hover;
         }
         .cell{
@@ -67,9 +52,12 @@
                 color:$brown;
             }
         }
+        .tag-label{
+            transform:translateY(-20px);
+        }
     }
 }
-#people{
+#show{
     .header-content{
         h1{
             border-bottom:2px dashed $orange;
@@ -113,7 +101,7 @@
             }
         }
     }
-    .people__tags{
+    .show__tags{
         margin:10px 0px;
         @include max-screen($small) {
             text-align:center;

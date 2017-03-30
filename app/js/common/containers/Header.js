@@ -14,7 +14,7 @@ class Header extends Component {
           <div className = "ribbon-left" />
           <div className = "ribbon-main">
             <div className = "header-main__left">
-              <Link activeClassName = "current" to = "/series">{'Toutes les séries'}</Link>
+              <Link activeClassName = "current" to = "/shows">{'Toutes les séries'}</Link>
               <Link activeClassName = "current" to = "/peoples">{'Portraits'}</Link>
             </div>
             <div className = "header-main__right">

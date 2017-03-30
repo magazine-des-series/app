@@ -4,9 +4,9 @@
  	 -ms-user-select: none;
  	 user-select: none;
 }
-%circle-picture-hover{
+%picture-hover{
     img{
-        transform:scale(1.2);
+        transform:translate(-50%,-50%) scale(1.2);
     }
     &:after{
         border-width:90px;

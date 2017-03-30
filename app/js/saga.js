@@ -1,7 +1,8 @@
 import { select, call, put, takeLatest } from 'redux-saga/effects';
 import api from './Api';
 import * as peopleActions from './peoples/actions/actions';
-import { getPeoples } from './selectors';
+import * as showActions from './shows/actions/actions';
+import { getPeoples, getShows } from './selectors';
 
 function* fetchPeople(action) {
   try {
@@ -68,8 +69,63 @@ function* fetchRelatedPeoples(action) {
   }
 }
 
+function* fetchShow(action) {
+  try {
+    const id = action.showId;
+    const showData = yield call(api.fetchShow, action.showId);
+    yield put({ type : showActions.SHOW_RECEIVED, show : showData.data });
+    if (!showData.data) return;
+    const title = `${showData.data.title}`;
+
+    // GET NEXT SHOW
+    try {
+      const nextShowData = yield call(api.fetchNextShow, id, title);
+      let next = null;
+      if (nextShowData.data && nextShowData.data.length > 0) next = nextShowData.data[0];
+      yield put({ type : showActions.NEXT_SHOW_RECEIVED, show : next });
+    } catch (e) {
+      yield put({ type : showActions.NEXT_PEOPLE_FAILED, message : e.message });
+    }
+
+    // GET PREV PEOPLE
+    try {
+      const prevShowData = yield call(api.fetchPrevShow, id, title);
+      let prev = null;
+      if (prevShowData.data && prevShowData.data.length > 0) prev = prevShowData.data[0];
+      yield put({ type : showActions.PREV_SHOW_RECEIVED, show : prev });
+    } catch (e) {
+      yield put({ type : showActions.PREV_SHOW_FAILED, show : e.message });
+    }
+  } catch (e) {
+    yield put({ type : showActions.SHOW_FETCH_FAILED, show : e.message });
+  }
+}
+
+function* fetchShows(action) {
+  try {
+    const showsData = yield call(
+      api.fetchShows,
+      action.page,
+      action.filter,
+    );
+    const showsState = yield select(getShows);
+    let lastPage = Math.ceil(showsData.total / showsState.itemsPerPage) || 1;
+    if (lastPage === 0) lastPage = 1;
+    yield put({
+      type : showActions.SHOWS_RECEIVED,
+      shows : showsData.data,
+      total : showsData.total,
+      lastPage,
+    });
+  } catch (e) {
+    yield put({ type : showActions.SHOWS_FETCH_FAILED, message : e.message });
+  }
+}
+
 export default function* rootSaga() {
   yield takeLatest(peopleActions.FETCH_PEOPLE, fetchPeople);
   yield takeLatest(peopleActions.FETCH_PEOPLES, fetchPeoples);
   yield takeLatest(peopleActions.FETCH_RELATED_PEOPLES, fetchRelatedPeoples);
+  yield takeLatest(showActions.FETCH_SHOW, fetchShow);
+  yield takeLatest(showActions.FETCH_SHOWS, fetchShows);
 }
