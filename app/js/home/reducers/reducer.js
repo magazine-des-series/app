@@ -1,7 +1,6 @@
-import sliderReducer from './sliderReducer';
 import { combineReducers } from 'redux';
+import news from './NewsReducer';
+import contests from './ContestsReducer';
+import podcasts from './PodcastsReducer';
 
-const reducer = combineReducers({
-    sliderReducer
-});
-export default reducer;
+export default combineReducers({ news, contests, podcasts });

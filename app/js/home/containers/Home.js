@@ -3,7 +3,6 @@ import { Link } from 'react-router';
 import NewsSlider from '../components/NewsSlider';
 import { connect } from 'react-redux';
 import { createStore, bindActionCreators } from 'redux';
-import * as actions from '../actions/actionsSlider';
 
 class Home extends Component {
     onClickHandler(){
