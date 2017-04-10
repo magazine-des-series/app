@@ -59,7 +59,7 @@ SimpleContainer.defaultProps = {
 
 const sagaMiddleware = createSagaMiddleware();
 const reducer = combineReducers({
-  HomeReducer,
+  home : HomeReducer,
   peoples : PeoplesReducer,
   shows : ShowsReducer,
   routing : routerReducer,
@@ -89,7 +89,7 @@ class App extends Component {
       <Provider store = {store}>
         <Router history = {history}>
           <Route path = "/" component = {Container}>
-            <IndexRoute />
+            <IndexRoute component = {Home} />
             <Route path = "/shows" params = {{ page : 1 }}>
               <IndexRoute component = {Shows} />
               <Route path = "/shows(/:id)(/:title)(/:article)(/:articleTitle)" component = {Show} />

@@ -10,6 +10,8 @@ export const LAST_PODCASTS_RECEIVED = 'LAST_PODCASTS_RECEIVED';
 export const LAST_CONTESTS_RECEIVED = 'LAST_CONTESTS_RECEIVED';
 export const NEWS_RECEIVED = 'NEWS_RECEIVED';
 
+export const NEWS_FETCH_FAILED = 'NEWS_FETCH_FAILED';
+
 export const SLIDER_NEWS_NEXT = 'SLIDER_NEWS_NEXT';
 export const SLIDER_NEWS_PREV = 'SLIDER_NEWS_PREV';
 
@@ -21,9 +23,9 @@ export const SLIDER_NEWS_PREV = 'SLIDER_NEWS_PREV';
   * Fetch the last contests
   * @returns {object} action
   */
-export const fetchLastContests = { type : FETCH_LAST_CONTESTS };
-export const fetchNews = { type : FETCH_NEWS };
-export const fetchLastPodcasts = { type : FETCH_LAST_PODCASTS };
+export const fetchLastContests = () => ({ type : FETCH_LAST_CONTESTS });
+export const fetchNews = () => ({ type : FETCH_NEWS });
+export const fetchLastPodcasts = () => ({ type : FETCH_LAST_PODCASTS });
 
-export const sliderNext = { type : SLIDER_NEWS_NEXT };
-export const sliderPrev = { type : SLIDER_NEWS_PREV };
+export const sliderNext = () => ({ type : SLIDER_NEWS_NEXT });
+export const sliderPrev = () => ({ type : SLIDER_NEWS_PREV });

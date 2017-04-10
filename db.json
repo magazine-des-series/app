@@ -335,6 +335,16 @@
       "articles" : []
     }
   ],
+  "news":[
+    {
+      "id": 1,
+      "name": "L'île fantastique",
+      "image": "shows/tonnerre.jpg",
+      "description":"Jesse Mach, un motard de la police, est choisi pour piloter le Faucon, une moto de haute technologie capable de rouler à 300 miles à l’heure et contrôlée par un ordinateur perfectionné. Dissimulée sous une combinaison noire, son identité doit rester secrète et les missions qu’il doit remplir sont confidentielles. Zorro moderne monté sur un destrier d’un nouveau type, il devient pour tous... le Tonnerre Mécanique. Un justicier et peut-être un jour... une légende !",
+      "author":"Christophe Dordain",
+      "dateCreated":"2015-02-02"
+    }
+  ],
   "comments": [
     { "id": 1, "body": "some comment", "postId": 1 },
     { "id": 2, "body": "some comment", "postId": 1 }

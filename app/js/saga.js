@@ -2,6 +2,7 @@ import { select, call, put, takeLatest } from 'redux-saga/effects';
 import api from './Api';
 import * as peopleActions from './peoples/actions/actions';
 import * as showActions from './shows/actions/actions';
+import * as homeActions from './home/actions/actions';
 import { getPeoples, getShows } from './selectors';
 
 function* fetchPeople(action) {
@@ -122,10 +123,25 @@ function* fetchShows(action) {
   }
 }
 
+function* fetchNews() {
+  try {
+    const newsData = yield call(
+      api.fetchNews,
+    );
+    yield put({
+      type : homeActions.NEWS_RECEIVED,
+      news : newsData.data,
+    });
+  } catch (e) {
+    yield put({ type : homeActions.NEWS_FETCH_FAILED, message : e.message });
+  }
+}
+
 export default function* rootSaga() {
   yield takeLatest(peopleActions.FETCH_PEOPLE, fetchPeople);
   yield takeLatest(peopleActions.FETCH_PEOPLES, fetchPeoples);
   yield takeLatest(peopleActions.FETCH_RELATED_PEOPLES, fetchRelatedPeoples);
   yield takeLatest(showActions.FETCH_SHOW, fetchShow);
   yield takeLatest(showActions.FETCH_SHOWS, fetchShows);
+  yield takeLatest(homeActions.FETCH_NEWS, fetchNews);
 }

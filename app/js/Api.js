@@ -99,6 +99,15 @@ const api = {
     );
   },
 
+  fetchNews() {
+    const url = `${API_URL}/news?_limit=5`;
+    const opts = { method : 'GET' };
+    return fetch(url, opts)
+      .then(resp => resp.json())
+      .then(data => ({ data }),
+    );
+  },
+
 };
 
 export default api;

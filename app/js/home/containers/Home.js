@@ -1,50 +1,41 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router';
-import NewsSlider from '../components/NewsSlider';
+import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { createStore, bindActionCreators } from 'redux';
+import * as actions from '../actions/actions';
+import HomeNews from './HomeNews';
 
 class Home extends Component {
-    onClickHandler(){
-        if(this.props.onClickHandler) this.props.onClickHandler();
-    }
-    render(){
-        return (
-            <div className = "full" id = "home">
-                <section id = "home_news">
-                    <div className = "home-news__background" />
-                    <img className = "home-news__logo" src="/img/logo_big.png" alt="Logo" />
-                    <div className = "home-news__content">
-                        <h2>Zoom sur</h2>
-                        <NewsSlider onClickHandler = {this.onClickHandler.bind(this)} items = {this.props.navigationReducer.items} currentIndex = {this.props.navigationReducer.currentIndex} />
-                            <div className = "home-news__button">
-                                    <div className="ribbon-left" />
-                                    <div className="ribbon-main">
-                                        <Link to='/series'>{"Voir tous les dossiers"}</Link>
-                                    </div>
-                                    <div className="ribbon-right" />
-                            </div>
 
+  componentDidMount() {
+    this.props.fetchNews();
+  }
 
-                    </div>
-                </section>
-                <h1>{"HOME"}</h1>
-                <h2><Link to="/peoples">Link to peoples</Link></h2>
-            </div>
-        )
-    }
+  render() {
+    return (
+      <div>
+        <HomeNews items = {this.props.news.items} />
+      </div>
+    );
+  }
 }
+
 function mapStateToProps(state) {
-  var sliderState = state.sliderReducer;
-  return sliderState;
+  return state.home;
 }
 
 function mapDispatchToProps(dispatch) {
-    return({
-        onClickHandler:function(){
-            dispatch(actions.sliderNext());
-        }
-    })
+  return ({
+    fetchNews : function fetchNews() {
+      dispatch(actions.fetchNews());
+    },
+  });
 }
+
+Home.propTypes = {
+  fetchNews : PropTypes.func,
+};
+
+Home.defaultProps = {
+  fetchNews : null,
+};
+
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
-//module.exports = Home;
