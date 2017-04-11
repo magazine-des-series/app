@@ -9,18 +9,20 @@ class HomeNews extends Component {
       <div id = "home_news">
         <HomeNewsBackground />
         <HomeLogo />
-        <HomeNewsSlider items = {this.props.items}/>
+        <HomeNewsSlider items = {this.props.data.items} />
       </div>
     );
   }
 }
 
 HomeNews.propTypes = {
-  items : PropTypes.array,
+  data : PropTypes.object,
 };
 
 HomeNews.defaultProps = {
-  items : [],
+  data : {
+    items : null,
+  },
 };
 
 module.exports = HomeNews;

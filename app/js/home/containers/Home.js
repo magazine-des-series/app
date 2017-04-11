@@ -12,7 +12,7 @@ class Home extends Component {
   render() {
     return (
       <div>
-        <HomeNews items = {this.props.news.items} />
+        <HomeNews data = {this.props.news} />
       </div>
     );
   }
@@ -32,10 +32,12 @@ function mapDispatchToProps(dispatch) {
 
 Home.propTypes = {
   fetchNews : PropTypes.func,
+  news : PropTypes.object,
 };
 
 Home.defaultProps = {
   fetchNews : null,
+  news : null,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
