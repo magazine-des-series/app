@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions/actions';
 import HomeNews from './HomeNews';
+import HomeContests from './HomeContests';
 
 class Home extends Component {
 
@@ -13,6 +14,7 @@ class Home extends Component {
     return (
       <div>
         <HomeNews data = {this.props.news} />
+        <HomeContests />
       </div>
     );
   }

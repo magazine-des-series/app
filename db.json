@@ -1,5 +1,5 @@
 {
-  "peoples": [
+  "api:peoples": [
       {
           "id": 1,
           "firstName": "Tony",
@@ -229,7 +229,7 @@
         "articles" : []
     }
   ],
-  "shows" : [
+  "api:shows" : [
     {
       "id": 1,
       "title": "Le fugitif",
@@ -335,7 +335,7 @@
       "articles" : []
     }
   ],
-  "news":[
+  "api:news":[
     {
       "id": 1,
       "name": "L'île fantastique",

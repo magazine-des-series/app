@@ -13,7 +13,9 @@ class NewsItem extends Component {
   render() {
     return (
       <article className = "home-news__item" itemScope itemType = "http://schema.org/Article" ref = {c => (this.container = c)}>
-        <img alt = {this.props.data.name} itemProp = "image" src = {`/img/${this.props.data.image}`} />
+        <div className = "home-news__item-image">
+          <img alt = {this.props.data.name} itemProp = "image" src = {`/img/${this.props.data.image}`} />
+        </div>
         <h3 itemProp = "name">{this.props.data.name}</h3>
         <p className = "meta">
           <i className = "i-calendar" />
