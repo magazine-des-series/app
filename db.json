@@ -1,5 +1,5 @@
 {
-  "api:peoples": [
+  "api_peoples": [
       {
           "id": 1,
           "firstName": "Tony",
@@ -229,7 +229,7 @@
         "articles" : []
     }
   ],
-  "api:shows" : [
+  "api_shows" : [
     {
       "id": 1,
       "title": "Le fugitif",
@@ -335,7 +335,7 @@
       "articles" : []
     }
   ],
-  "api:news":[
+  "api_news":[
     {
       "id": 1,
       "name": "L'île fantastique",
@@ -343,6 +343,40 @@
       "description":"Jesse Mach, un motard de la police, est choisi pour piloter le Faucon, une moto de haute technologie capable de rouler à 300 miles à l’heure et contrôlée par un ordinateur perfectionné. Dissimulée sous une combinaison noire, son identité doit rester secrète et les missions qu’il doit remplir sont confidentielles. Zorro moderne monté sur un destrier d’un nouveau type, il devient pour tous... le Tonnerre Mécanique. Un justicier et peut-être un jour... une légende !",
       "author":"Christophe Dordain",
       "dateCreated":"2015-02-02"
+    }
+  ],
+  "api_contests":[
+    {
+      "id": 1,
+      "name":"Série Au Pays des Géants Volume 3",
+      "description":"Le Quotidien du Cinéma en partenariat avec LCJ Editions vous propose de gagner le 3ème coffret de l'intégrale de la série \" Au pays des géants \" .",
+      "endDate":"2017-04-29",
+      "startDate":"2017-04-01",
+      "image":"contests/pays_des_geants.jpg"
+    },
+    {
+      "id": 2,
+      "name":"Les Médicis",
+      "description":"Le Quotidien du Cinéma en partenariat avec Wild Side vous propose de gagner l'intégrale de la saison 1 de la série \" Les médicis \" .",
+      "endDate":"2017-04-29",
+      "startDate":"2017-04-01",
+      "image":"contests/les_medicis.jpg"
+    },
+    {
+      "id": 3,
+      "name":"Les petits génies",
+      "description":"Le Quotidien du Cinéma en partenariat avec Elephant Films vous propose de gagner l'intégrale de la série \" Les petits génies \" .",
+      "endDate":"2017-04-29",
+      "startDate":"2017-04-01",
+      "image":"contests/les_petits_genies.jpg"
+    },
+    {
+      "id": 4,
+      "name":"Chicago Police Department Saison 2",
+      "description":"Le Quotidien du Cinéma en partenariat avec Universal Pictures Video vous propose de gagner l'intégrale de la saison 2 de la série \" Chicago Police Department \" .",
+      "endDate":"2017-04-29",
+      "startDate":"2017-04-01",
+      "image":"contests/chicago_police_department.jpg"
     }
   ],
   "comments": [

@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 /**
  * Contest component
  */
-class Concours extends Component {
+class Contest extends Component {
   /** @inheritdoc */
   render() {
     return (
@@ -14,4 +14,4 @@ class Concours extends Component {
   }
 }
 
-module.exports = Concours;
+module.exports = Contest;

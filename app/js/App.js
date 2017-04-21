@@ -3,6 +3,9 @@ import 'babel-polyfill';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import moment from 'moment';
 
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux';
@@ -17,11 +20,16 @@ import Peoples from './peoples/containers/Peoples';
 import People from './peoples/containers/People';
 import Shows from './shows/containers/Shows';
 import Show from './shows/containers/Show';
-import Concours from './contests/containers/Concours';
+import Contests from './contests/containers/Contests';
+import Contest from './contests/containers/Contest';
 import Podcasts from './podcasts/containers/Podcasts';
 import Home from './home/containers/Home';
 
+import UsersListContainer from './peoples/containers/UsersListContainer';
+
+
 import '../css/main.scss';
+
 
 const sagaMiddleware = createSagaMiddleware();
 const reducer = combineReducers({
@@ -40,7 +48,7 @@ class App extends Component {
   static init() {
     const locale = window.navigator.userLanguage || window.navigator.language;
     moment.locale(locale);
-    /* store.subscribe(() =>
+  /*  store.subscribe(() =>
       console.log(store.getState()),
     ); */
   }
@@ -64,8 +72,12 @@ class App extends Component {
               <IndexRoute component = {Peoples} />
               <Route path = "/peoples(/:id)(/:fullName)(/:article)(/:articleTitle)" component = {People} />
             </Route>
-            <Route path = "/concours" component = {Concours} />
+            <Route path = "/contests" params = {{ page : 1 }}>
+              <IndexRoute component = {Contests} />
+              <Route path = "/contests(/:id)(/:title)" component = {Contest} />
+            </Route>
             <Route path = "/podcasts" component = {Podcasts} />
+            <Route path = "/tuto" component = {UsersListContainer} />
           </Route>
         </Router>
       </Provider>

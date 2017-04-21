@@ -1,23 +1,16 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions/actions';
-import HomeTitle from '../components/HomeTitle';
+import HomeContests from '../components/contests/HomeContests';
 
-class HomeContests extends Component {
+class HomeContestsContainer extends Component {
 
   componentDidMount() {
     this.props.fetchLastContests();
   }
 
   render() {
-    return (
-      <div id = "home_contests">
-        <HomeTitle
-          preTitle = "Participez à nos"
-          title = "Concours"
-        />
-      </div>
-    )
+    return <HomeContests />;
   }
 }
 
@@ -33,12 +26,12 @@ function mapDispatchToProps(dispatch) {
   });
 }
 
-HomeContests.propTypes = {
+HomeContestsContainer.propTypes = {
   fetchLastContests : PropTypes.func,
 };
 
-HomeContests.defaultProps = {
+HomeContestsContainer.defaultProps = {
   fetchLastContests : null,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(HomeContests);
+export default connect(mapStateToProps, mapDispatchToProps)(HomeContestsContainer);

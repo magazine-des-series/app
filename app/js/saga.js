@@ -137,6 +137,20 @@ function* fetchNews() {
   }
 }
 
+function* fetchLastContests() {
+  try {
+    const contestsData = yield call(
+      api.fetchLastContests,
+    );
+    yield put({
+      type : homeActions.LAST_CONTESTS_RECEIVED,
+      contests : contestsData.data,
+    });
+  } catch (e) {
+    yield put({ type : homeActions.LAST_CONTESTS_FETCH_FAILED, message : e.message });
+  }
+}
+
 export default function* rootSaga() {
   yield takeLatest(peopleActions.FETCH_PEOPLE, fetchPeople);
   yield takeLatest(peopleActions.FETCH_PEOPLES, fetchPeoples);
@@ -144,4 +158,5 @@ export default function* rootSaga() {
   yield takeLatest(showActions.FETCH_SHOW, fetchShow);
   yield takeLatest(showActions.FETCH_SHOWS, fetchShows);
   yield takeLatest(homeActions.FETCH_NEWS, fetchNews);
+  yield takeLatest(homeActions.FETCH_LAST_CONTESTS, fetchLastContests);
 }
